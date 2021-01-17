@@ -1,65 +1,39 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import AppLayout from "../components/Layout/Layout";
+import SearchBarDesktop from "../components/Search/SearchBarDesktop/SearchBarDesktop";
+import React from "react";
+import {Media} from "../components/Media/Media";
+import style from "../styles/global.module.css"
+
+import SearchBarMobile from "../components/Search/SearchBarMobile/SearchBarMobile";
+import {useRouter} from "next/router";
+import Head from "next/head";
 
 export default function Home() {
+  const router = useRouter();
+
+  const onSearch = (values) => {
+    router.push({pathname: '/search', query: values})
+  };
+
   return (
-    <div className={styles.container}>
+    <AppLayout>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>ZARAH - Women’s labour activism in Eastern Europe and transnationally, from the age of empires to the late 20th century</title>
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+      <div className={style.FrontPageSearch}>
+        <Media at="xs">
+          <div style={{paddingTop: '200px'}}>
+            <h2>ZARAH - Women’s labour activism in Eastern Europe and transnationally<br/>from the age of empires to the late 20th century</h2>
+            <SearchBarMobile onSearch={onSearch}/>
+          </div>
+        </Media>
+        <Media greaterThan="xs">
+          <div style={{paddingTop: '200px'}}>
+            <h1>ZARAH - Women’s labour activism in Eastern Europe and transnationally<br/>from the age of empires to the late 20th century</h1>
+            <SearchBarDesktop onSearch={onSearch}/>
+          </div>
+        </Media>
+      </div>
+    </AppLayout>
   )
 }

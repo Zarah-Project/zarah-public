@@ -1,0 +1,23 @@
+.Slider {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.SliderValues {
+    margin-top: 10px;
+    font-weight: 700;
+    color: #F45844;
+    background-color: #FFFFFF;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.FilterButton {
+    font-size: 12px;
+}
+
+.ResetButton {
+    font-size: 12px;
+    margin-left: 5px;
+}

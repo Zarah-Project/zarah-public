@@ -1,0 +1,8 @@
+.Content {
+    background-color: unset;
+}
+
+.ContentWrap {
+    margin: 140px auto 0 auto;
+    max-width: 1000px;
+}

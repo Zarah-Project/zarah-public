@@ -1,0 +1,60 @@
+.RecordWrap {
+    margin-top: 60px;
+    margin-bottom: 50px;
+    min-height: calc(100vh - 275px);
+}
+
+.Title {
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.Title h1 {
+    font-size: 30px;
+    line-height: 40px;
+    display: inline;
+    background: #c46076;
+    box-shadow: 10px 0 0 #c46076, -10px 0 0 #c46076;
+}
+
+.RecordWrap dl {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .RecordWrap dl {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .RecordWrap dt {
+        text-transform: uppercase;
+    }
+}
+
+.RecordWrap dt {
+    flex: 1;
+    color: #c46076;
+    text-transform: uppercase;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px
+}
+
+.RecordWrap dd {
+    flex: 2;
+    margin-bottom: 0;
+}
+
+.RecordWrap p {
+    margin-bottom: 0;
+}
+
+.RecordWrap ul {
+    margin-bottom: 20px;
+}
+
+.MediaContainer {
+    margin-top: 20px !important;
+    min-height: 100px;
+}

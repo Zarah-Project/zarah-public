@@ -1,0 +1,28 @@
+.Header {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 60px;
+    line-height: 30px;
+    background-color: #F9F9F9;
+    padding: 0 20px;
+}
+
+.Logo {
+    padding: 10px 0;
+    height: 60px;
+    opacity: .7;
+}
+
+.Menu {
+    font-family: 'Bebas Neue', cursive;
+    background-color: inherit;
+    border-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.MenuItem {
+    font-weight: 400;
+}

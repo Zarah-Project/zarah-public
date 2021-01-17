@@ -1,0 +1,98 @@
+@import "~antd/dist/antd.less";
+
+@primary-color: #c46076; // primary color for all components
+@secondary-color: #666666;
+@third-color: #F9F9F9;
+@font-family: 'Roboto Slab', sans-serif;
+@body-background: @third-color;
+@layout-body-background: @third-color;
+@link-color: @primary-color;
+@text-color: @secondary-color;
+@font-size-base: 16px;
+@line-height-base: 150%;
+
+/* Menu */
+@menu-item-font-size: 20px;
+@menu-item-color: @secondary-color;
+
+/* Collapse */
+@collapse-panel-border-radius: 0;
+
+h1 {
+  color: @third-color;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 36px;
+  line-height: 36px;
+}
+
+h2 {
+  color: @third-color;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px;
+  line-height: 28px;
+}
+
+/* Container concept */
+.container {
+  width: 100%;
+  align-self: center;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fresnel-container {
+  width: 100%;
+}
+
+.collapse-css-transition {
+  transition: height 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ant-pagination-total-text {
+  font-family: "Bebas Neue", cursive ;
+  color: #666;
+  line-height: 40px;
+  font-size: 14px;
+  margin-right: 0;
+  display: block;
+}
+
+.ant-select-item-option-content {
+  white-space: normal;
+}
+
+.ant-card-head-title {
+  font-size: 16px;
+  color: #666;
+}
+
+.ant-card-body {
+  padding: 12px;
+}
+
+.ant-tabs-tab-btn {
+  font-family: 'Bebas Neue', cursive !important;
+  font-size: 16px;
+}
+
+@media (max-width: @screen-md) {
+  .container {
+    margin-top: 90px;
+  }
+}
+
+.make-container(@minWidth, @breakpoint) {
+  @media (min-width: @minWidth) {
+    .container {
+      max-width: @breakpoint - 50;
+    }
+  }
+}
+
+.make-container(@screen-xs-min, @screen-xs);
+.make-container(@screen-sm-min, @screen-sm);
+.make-container(@screen-md-min, @screen-md);
+.make-container(@screen-lg-min, @screen-lg);
+.make-container(@screen-xl-min, @screen-xl);
+.make-container(@screen-xxl-min, @screen-xxl); // Optional

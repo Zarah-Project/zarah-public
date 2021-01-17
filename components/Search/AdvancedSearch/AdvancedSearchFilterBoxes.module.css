@@ -1,0 +1,43 @@
+.SearchOpenWrapper {
+    margin-top: -10px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.SearchOpenLink {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 14px;
+    border-bottom: 1px dotted;
+}
+
+.AdvancedSearchWrapper label {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 14px;
+}
+
+.FacetsOff {
+    display: none;
+}
+
+.FilterText {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    color: #F45844;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+}
+
+.FilterTextMobile {
+    font-weight: 700;
+    border: none;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    padding: 5px 10px;
+}
+
+.FilterTextMobile:hover {
+    cursor: pointer;
+}
