@@ -40,7 +40,7 @@ const AdvancedSearchFilterBoxes = ({ facets, selectedFacets, onFacetSelect, onFa
         </Row>
         <Collapse isOpen={searchOpen}>
           <div className={style.FacetsWrapper}>
-            <Tabs defaultActiveKey="authority" >
+            <Tabs animated={true} defaultActiveKey="authority" >
               <TabPane tab="Authority Filters" key="authority">
                 <Row gutter={[16, 32]}>
                   <Col sm={12} md={6}>
