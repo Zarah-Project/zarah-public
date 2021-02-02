@@ -6,12 +6,13 @@
 }
 
 .SearchOpenLink {
-    font-family: 'Bebas Neue', cursive;
-    font-size: 14px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
     border-bottom: 1px dotted;
 }
 
 .AdvancedSearchWrapper label {
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Oswald', sans-serif;
     font-size: 14px;
 }

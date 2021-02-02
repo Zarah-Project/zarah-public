@@ -20,16 +20,16 @@ const DesktopMenu = () => {
         <Col flex={22}>
           <Menu theme="light" mode="horizontal" className={style.Menu}>
             <Menu.Item className={style.MenuItem} key="search">
-              <Link href={'/search'}>Database</Link>
+              <Link href={'/search'}>DATABASE</Link>
             </Menu.Item>
             <Menu.Item className={style.MenuItem} key="timeline">
-              <Link href={'/researchers'}>For Researchers</Link>
+              <Link href={'/researchers'}>FOR RESEARCHERS</Link>
             </Menu.Item>
             <Menu.Item className={style.MenuItem} key="collections">
-              <Link href={'/data'}>Data</Link>
+              <Link href={'/data'}>DATA</Link>
             </Menu.Item>
             <Menu.Item className={style.MenuItem} key="about">
-              <Link href={'/about'}>About</Link>
+              <Link href={'/about'}>ABOUT</Link>
             </Menu.Item>
           </Menu>
         </Col>

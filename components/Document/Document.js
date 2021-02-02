@@ -3,6 +3,7 @@ import {Button, Col, Row} from "antd";
 import React, {useState} from "react";
 import {API} from "../../utils/api";
 import Collapse from "@kunukn/react-collapse";
+import Link from "next/link";
 
 const Document = ({data}) => {
   const [viewerOpen, setViewerOpen] = useState(false);
@@ -49,15 +50,41 @@ const Document = ({data}) => {
     }
   };
 
-  const displayArrayOfObjField = (label, field, key) => {
+  const displayArrayOfObjField = (label, field, key, facet=false) => {
     if (data.hasOwnProperty(field)) {
       if (data[field].length > 0) {
-        return renderData(data[field].map(d => d[key]).join("; "), label, field)
+        return renderData(data[field].map(d => d[key]).join("; "), label, field, false, facet)
       }
     }
   };
 
-  const renderData = (data, label, html) => {
+  const renderData = (data, label, field, html=false, facet=false) => {
+    const renderValue = (d) => {
+      const facet_field = `${field}_facet`;
+
+      if (html) {
+        if (facet) {
+          return (
+            <React.Fragment>
+              <Link href={{
+                pathname: '/search',
+                query: {[facet_field]: d}
+              }}/>
+              <div dangerouslySetInnerHTML={{ __html: d}}/>
+              <br/>
+            </React.Fragment>
+          )
+        } else {
+          return (
+            <React.Fragment>
+              <div dangerouslySetInnerHTML={{ __html: d}}/>
+              <br/>
+            </React.Fragment>
+          )
+        }
+      }
+    };
+
     if (Array.isArray(data)) {
       return (
         <dl>
@@ -65,8 +92,12 @@ const Document = ({data}) => {
           <dd>
             {data.map((d) => (
               html ?
-                <React.Fragment><div dangerouslySetInnerHTML={{ __html: d}}/><br/></React.Fragment> :
-                <React.Fragment>{d}<br/></React.Fragment>
+                <React.Fragment>
+                  <div dangerouslySetInnerHTML={{ __html: d}}/><br/>
+                </React.Fragment> :
+                <React.Fragment>
+                  {d}<br/>
+                </React.Fragment>
             ))}
           </dd>
         </dl>

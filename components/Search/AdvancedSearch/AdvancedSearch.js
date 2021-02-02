@@ -39,7 +39,7 @@ const AdvancedSearch = ({onAdvancedSearch, searchValue, facets, selectedFacets={
         <Col xs={14}>
           <div className={style.SearchOpenWrapper}>
             <a className={style.SearchOpenLink} onClick={() => setSearchOpen(!searchOpen)}>
-              {searchOpen ? 'Close Advanced Search' : 'Show Advanced Search'}
+              {searchOpen ? 'CLOSE ADVANCED SEARCH' : 'OPEN ADVANCED SEARCH'}
             </a>
           </div>
         </Col>

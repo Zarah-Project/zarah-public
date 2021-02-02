@@ -32,7 +32,7 @@ const AdvancedSearchFilterBoxes = ({ facets, selectedFacets, onFacetSelect, onFa
           <Col xs={14}>
             <div className={style.SearchOpenWrapper}>
               <a className={style.SearchOpenLink} onClick={() => setSearchOpen(!searchOpen)}>
-                {searchOpen ? 'Close Advanced Search' : 'Show Advanced Search'}
+                {searchOpen ? 'CLOSE ADVANCED SEARCH' : 'SHOW ADVANCED SEARCH'}
               </a>
             </div>
           </Col>
