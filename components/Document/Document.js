@@ -26,10 +26,11 @@ const Document = ({data}) => {
           switch (itemType) {
             case 'journalArticle':
             case 'magazineArticle':
+            case 'newspaperArticle':
               if (zoteroObject.hasOwnProperty('publicationTitle')) {
                 const journal = `${zoteroObject['publicationTitle']}`;
-                const volume = `${zoteroObject['volume'] !== "" ? ` vol. ${zoteroObject['volume']}` : ""}`;
-                const issue = `${zoteroObject['issue'] !== "" ? `/${zoteroObject['issue']}` : ""}`;
+                const volume = `${zoteroObject['volume'] && zoteroObject['volume'] !== "" ? ` vol. ${zoteroObject['volume']}` : ""}`;
+                const issue = `${zoteroObject['issue'] && zoteroObject['issue'] !== "" ? `/${zoteroObject['issue']}` : ""}`;
                 return renderData(`${journal}${volume}${issue}`, label, zoteroField)
               }
               break;
