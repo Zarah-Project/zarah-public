@@ -21,18 +21,18 @@ const LayoutFooter = () => {
         <Col xs={24} lg={12}>
           <div style={{display: 'flex', justifyContent: 'center'}}>
               <div className={style.Image}>
-                <Image width={120} height={120} src='/images/eu-logo.png'/>
+                <Image width={60} height={60} src='/images/eu-logo.png'/>
               </div>
               <div className={style.Image} style={{borderLeft: '1px solid'}}>
-                <Image width={120} height={120} src='/images/erc-logo.png'/>
+                <Image width={60} height={60} src='/images/erc-logo.png'/>
               </div>
               <div className={style.Image} style={{borderLeft: '1px solid'}}>
-                <Image width={250} height={120} src='/images/ceu-logo.png'/>
+                <Image width={125} height={60} src='/images/ceu-logo.png'/>
               </div>
           </div>
         </Col>
         <Col xs={24} lg={6}>
-          <div className={style.Info}>
+          <div className={style.FooterLinks}>
             <Link href={'/privacy-notice'}>Privacy Notice</Link><br/>
             <Link href={'/imprint'}>Imprint</Link>
           </div>
