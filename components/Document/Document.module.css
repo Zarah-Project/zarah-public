@@ -6,15 +6,15 @@
 
 .Title {
     margin: 20px 0;
-    padding: 10px;
 }
 
 .Title h1 {
+    color: #c46076;
     font-size: 30px;
     line-height: 40px;
     display: inline;
-    background: #c46076;
-    box-shadow: 10px 0 0 #c46076, -10px 0 0 #c46076;
+    background: #F3F3F3;
+    box-shadow: 10px 0 0 #F3F3F3, -10px 0 0 #F3F3F3;
 }
 
 .RecordWrap dl {
