@@ -21,6 +21,24 @@ const Document = ({data}) => {
             d = authors.join('; ');
           }
           return renderData(d, label, zoteroField);
+        case 'publicationTitle':
+          const itemType = zoteroObject['itemType'];
+          switch (itemType) {
+            case 'journalArticle':
+            case 'magazineArticle':
+              if (zoteroObject.hasOwnProperty('publicationTitle')) {
+                const journal = `${zoteroObject['publicationTitle']}`;
+                const volume = `${zoteroObject['volume'] !== "" ? ` vol. ${zoteroObject['volume']}` : ""}`;
+                const issue = `${zoteroObject['issue'] !== "" ? `/${zoteroObject['issue']}` : ""}`;
+                return renderData(`${journal}${volume}${issue}`, label, zoteroField)
+              }
+              break;
+            case 'bookSection':
+              return renderData(`${zoteroObject['bookTitle']}`, label, zoteroField);
+            default:
+              break;
+          }
+          break;
         default:
           return displayData(zoteroObject, label, zoteroField)
       }
@@ -118,14 +136,16 @@ const Document = ({data}) => {
 
   const displayData = (data, label, field, html) => {
     if (data.hasOwnProperty(field)) {
-      return (
-        <dl>
-          <dt>{label}</dt>
-          <dd>
-            {html ? <div dangerouslySetInnerHTML={{ __html: data[field]}}/> : data[field]}
-          </dd>
-        </dl>
-      )
+      if (data[field] !== "") {
+        return (
+          <dl>
+            <dt>{label}</dt>
+            <dd>
+              {html ? <div dangerouslySetInnerHTML={{ __html: data[field]}}/> : data[field]}
+            </dd>
+          </dl>
+        )
+      }
     }
   };
 
@@ -178,11 +198,12 @@ const Document = ({data}) => {
         <Col xs={0} sm={2}/>
         <Col xs={24} sm={20}>
           {displayField("Item Type", "item_type")}
+          {displayZoteroField("Publication title", "publicationTitle")}
           {displayZoteroField("Author (Zotero)", "author")}
           {displayZoteroField("Date (Zotero)", "date")}
           {displayZoteroField("Language (Zotero)", "language")}
           {displayZoteroField("Archive (Zotero)", "archive")}
-          {displayZoteroField("Archive Location (Zotero)", "archive_location")}
+          {displayZoteroField("Archive Location (Zotero)", "archiveLocation")}
           {displayField("Abstract", "abstract", true)}
           {displayArrayField("Other keywords for document", "keywords")}
           {displayArrayField("Events", "events")}
