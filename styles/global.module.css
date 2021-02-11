@@ -23,7 +23,7 @@
 
 .FrontPageSearch {
     width: 100%;
-    height: calc(100vh - 187px);
+    height: calc(100vh - 120px);
     position: relative;
     flex-grow: 1;
     margin-top: 20px;
