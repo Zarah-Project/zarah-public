@@ -22,22 +22,15 @@ const Document = ({data}) => {
           }
           return renderData(d, label, zoteroField);
         case 'publicationTitle':
-          const itemType = zoteroObject['itemType'];
-          switch (itemType) {
-            case 'journalArticle':
-            case 'magazineArticle':
-            case 'newspaperArticle':
-              if (zoteroObject.hasOwnProperty('publicationTitle')) {
-                const journal = `${zoteroObject['publicationTitle']}`;
-                const volume = `${zoteroObject['volume'] && zoteroObject['volume'] !== "" ? ` vol. ${zoteroObject['volume']}` : ""}`;
-                const issue = `${zoteroObject['issue'] && zoteroObject['issue'] !== "" ? `/${zoteroObject['issue']}` : ""}`;
-                return renderData(`${journal}${volume}${issue}`, label, zoteroField)
-              }
-              break;
-            case 'bookSection':
-              return renderData(`${zoteroObject['bookTitle']}`, label, zoteroField);
-            default:
-              break;
+          if (zoteroObject.hasOwnProperty('publicationTitle')) {
+            const journal = `${zoteroObject['publicationTitle']}`;
+            const volume = `${zoteroObject['volume'] && zoteroObject['volume'] !== "" ? ` vol. ${zoteroObject['volume']}` : ""}`;
+            const issue = `${zoteroObject['issue'] && zoteroObject['issue'] !== "" ? `/${zoteroObject['issue']}` : ""}`;
+            return renderData(`${journal}${volume}${issue}`, label, zoteroField)
+          }
+
+          if (zoteroObject.hasOwnProperty('bookTitle')) {
+            return renderData(`${zoteroObject['bookTitle']}`, label, zoteroField);
           }
           break;
         default:
