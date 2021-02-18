@@ -1,0 +1,21 @@
+.Highlight {
+    font-size: 14px;
+    margin-top: 5px;
+    line-height: 16px;
+}
+
+.Highlight em {
+    font-style: normal;
+    background-color: rgba(196, 96, 118, 0.2);
+    padding: 0 2px;
+    color: #666
+}
+
+.Highlight p {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.Highlight span {
+    font-weight: 600;
+}

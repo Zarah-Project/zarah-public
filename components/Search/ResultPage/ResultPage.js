@@ -7,7 +7,7 @@ const ResultPage = ({data, query, limit, view='list', offset, selectedFacets, on
   return (
     <div className={style.Results}>
       <ResultPagination count={data.count} limit={limit} offset={offset} onPageChange={onPageChange} />
-      <ResultPageList data={data.results} />
+      <ResultPageList data={data.results} highlights={data.highlights}  />
       <ResultPagination count={data.count} limit={limit} offset={offset} onPageChange={onPageChange} />
     </div>
   );

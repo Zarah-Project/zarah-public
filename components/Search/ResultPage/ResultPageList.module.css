@@ -32,6 +32,29 @@
     margin-bottom: 10px;
 }
 
+.Title em {
+    font-style: normal;
+    padding: 0 5px;
+    color: #c46076;
+    background-color: rgba(102, 102, 102, 0.1);
+}
+
 .ItemType {
     margin-bottom: 10px;
 }
+
+.More {
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 5px;
+    line-height: 14px;
+}
+
+.Highlight {
+    background-color: #FFF;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
