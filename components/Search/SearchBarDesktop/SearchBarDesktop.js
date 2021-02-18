@@ -6,6 +6,7 @@ import style from "./SearchBarDesktop.module.css";
 import {Formik} from "formik";
 import AdvancedSearch from "../AdvancedSearch/AdvancedSearch";
 import AdvancedSearchFilterBoxes from "../AdvancedSearch/AdvancedSearchFilterBoxes";
+import SelectedFacets from "../SelectedFacets/SelectedFacets";
 
 const SearchBarDesktop = ({onSearch, query, facets, selectedFacets, advancedSearch=false,
                             onFacetSelect, onFacetRemove, ...props}) => {
@@ -50,6 +51,12 @@ const SearchBarDesktop = ({onSearch, query, facets, selectedFacets, advancedSear
           </Form>
         )}
       </Formik>
+      <Row>
+        <SelectedFacets
+          selectedFacets={selectedFacets}
+          onFacetRemove={onFacetRemove}
+        />
+      </Row>
       {advancedSearch &&
       <AdvancedSearchFilterBoxes
         onFacetSelect={onFacetSelect}

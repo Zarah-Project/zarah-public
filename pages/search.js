@@ -1,6 +1,5 @@
 import AppLayout from "../components/Layout/Layout";
 import SearchBarDesktop from "../components/Search/SearchBarDesktop/SearchBarDesktop";
-import SearchBarMobile from "../components/Search/SearchBarMobile/SearchBarMobile";
 import React, {useState} from "react";
 import {Media} from "../components/Media/Media";
 import useSWR from 'swr'
