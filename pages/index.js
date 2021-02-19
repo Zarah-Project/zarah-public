@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <AppLayout>
       <Head>
-        <title>ZARAH - Women’s labour activism in Eastern Europe and transnationally, from the age of empires to the late 20th century</title>
+        <title>ZARAH DB - Women’s labour activism in Eastern Europe and transnationally, from the age of empires to the late 20th century</title>
       </Head>
       <div className={style.FrontPageSearch}>
         <Media at="xs">
