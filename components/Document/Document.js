@@ -193,16 +193,16 @@ const Document = ({data}) => {
         <Col xs={24} sm={20}>
           {displayField("Item Type", "item_type")}
           {displayZoteroField("Publication title", "publicationTitle")}
-          {displayZoteroField("Author (Zotero)", "author")}
-          {displayZoteroField("Date (Zotero)", "date")}
-          {displayZoteroField("Language (Zotero)", "language")}
-          {displayZoteroField("Archive (Zotero)", "archive")}
-          {displayZoteroField("Archive Location (Zotero)", "archiveLocation")}
+          {displayZoteroField("Author", "author")}
+          {displayZoteroField("Date", "date")}
+          {displayZoteroField("Language", "language")}
+          {displayZoteroField("Archive", "archive")}
+          {displayZoteroField("Archive Location", "archiveLocation")}
           {displayField("Abstract", "abstract", true)}
           {displayArrayField("Other keywords for document", "keywords")}
           {displayArrayField("Events", "events")}
           {displayArrayField("People", "people")}
-          {displayArrayOfObjField("Organisations", "organisations", "full_name")}
+          {displayArrayOfObjField("Organizations", "organisations", "full_name")}
           {displayArrayOfObjField("Places", "places", "full_name")}
           {displayClassificationField("Historical context", "historical_context")}
           {displayClassificationField("Labour conditions", "labour_conditions")}

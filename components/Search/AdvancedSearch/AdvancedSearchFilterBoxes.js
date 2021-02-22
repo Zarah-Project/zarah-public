@@ -47,7 +47,7 @@ const AdvancedSearchFilterBoxes = ({ facets, selectedFacets, onFacetSelect, onFa
                     {renderTextFacet('People', 'person', true)}
                   </Col>
                   <Col sm={12} md={6}>
-                    {renderTextFacet('Organisations', 'organisation', true)}
+                    {renderTextFacet('Organizations', 'organisation', true)}
                   </Col>
                   <Col sm={12} md={6}>
                     {renderTextFacet('Events', 'event', true)}
