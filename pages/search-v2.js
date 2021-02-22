@@ -18,12 +18,12 @@ const Search = () => {
   const { data, error } = useSWR([`${API}/search`, params], fetcher);
 
   const onSearch = (values) => {
-    router.push({pathname: '/search', query: values})
+    router.push({pathname: '/search-v2', query: values})
   };
 
   const onPageChange = (page, pageSize) => {
     router.push({
-      pathname: '/search',
+      pathname: '/search-v2',
       query: {
         query: query,
         limit: pageSize,
@@ -49,7 +49,7 @@ const Search = () => {
     }
 
     router.push({
-      pathname: '/search', query: {
+      pathname: '/search-v2', query: {
         query: query,
         limit: limit,
         ...selectedFacets
@@ -71,7 +71,7 @@ const Search = () => {
     }
 
     router.push({
-      pathname: '/search', query: {
+      pathname: '/search-v2', query: {
         query: query,
         limit: limit,
         ...selectedFacets
@@ -124,7 +124,7 @@ const Search = () => {
             onSearch={onSearch}
             query={query}
             selectedFacets={selectedFacets}
-            advancedSearch={1}
+            advancedSearch={2}
             facets={data ? data['facets'] : {}}
           />
         </Media>
@@ -134,7 +134,7 @@ const Search = () => {
               onSearch={onSearch}
               query={query}
               selectedFacets={selectedFacets}
-              advancedSearch={1}
+              advancedSearch={2}
               facets={data ? data['facets'] : {}}
               onFacetSelect={onFacetSelect}
               onFacetRemove={onFacetRemove}

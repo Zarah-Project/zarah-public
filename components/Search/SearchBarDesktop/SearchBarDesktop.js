@@ -4,11 +4,11 @@ import { Form, Input } from 'formik-antd'
 import { SearchOutlined } from '@ant-design/icons';
 import style from "./SearchBarDesktop.module.css";
 import {Formik} from "formik";
-import AdvancedSearch from "../AdvancedSearch/AdvancedSearch";
 import AdvancedSearchFilterBoxes from "../AdvancedSearch/AdvancedSearchFilterBoxes";
 import SelectedFacets from "../SelectedFacets/SelectedFacets";
+import AdvancedSearchFilterBoxesV2 from "../AdvancedSearch/AdvancedSearchFilterBoxesV2";
 
-const SearchBarDesktop = ({onSearch, query, facets, selectedFacets, advancedSearch=false,
+const SearchBarDesktop = ({onSearch, query, facets={}, selectedFacets={}, advancedSearch=1,
                             onFacetSelect, onFacetRemove, ...props}) => {
   const [queryString, setQueryString] = useState({query: ''});
 
@@ -57,8 +57,16 @@ const SearchBarDesktop = ({onSearch, query, facets, selectedFacets, advancedSear
           onFacetRemove={onFacetRemove}
         />
       </Row>
-      {advancedSearch &&
+      {advancedSearch === 1 &&
       <AdvancedSearchFilterBoxes
+        onFacetSelect={onFacetSelect}
+        onFacetRemove={onFacetRemove}
+        selectedFacets={selectedFacets}
+        facets={facets}
+      />
+      }
+      {advancedSearch === 2 &&
+      <AdvancedSearchFilterBoxesV2
         onFacetSelect={onFacetSelect}
         onFacetRemove={onFacetRemove}
         selectedFacets={selectedFacets}
