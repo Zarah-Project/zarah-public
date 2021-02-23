@@ -100,13 +100,13 @@ const Search = () => {
         </div>
       </Col>
       <Col xs={24}>
-        <div style={{textAlign: 'center'}}>
+        <div style={{textAlign: 'center', marginTop: '20px', opacity: 0.3}}>
           <Image
-            width={400}
-            height={400}
+            width={300}
+            height={94}
             objectFit={'contain'}
             objectPosition={'center center'}
-            src={'/images/emptyPage.svg'}
+            src={'/images/zarah-empty.png'}
           />
         </div>
       </Col>
