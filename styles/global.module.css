@@ -34,6 +34,19 @@
     text-align: center;
 }
 
+.ImageText {
+    font-size: 12px;
+    line-height: 20px;
+    color: #F9F9F9;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.ImageText span {
+    font-style: italic;
+}
+
 @media screen and (max-width: 768px) {
     .FrontPageSearch {
         height: calc(100vh - 190px);

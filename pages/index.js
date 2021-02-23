@@ -24,15 +24,18 @@ export default function Home() {
         <Media at="xs">
           <div style={{paddingTop: '200px'}}>
             <h2>ZARAH - Women’s labour activism in Eastern Europe and transnationally<br/>from the age of empires to the late 20th century</h2>
-            <SearchBarMobile onSearch={onSearch}/>
+            <SearchBarMobile onSearch={onSearch} advancedSearch={0}/>
           </div>
         </Media>
         <Media greaterThan="xs">
           <div style={{paddingTop: '200px'}}>
             <h1>ZARAH - Women’s labour activism in Eastern Europe and transnationally<br/>from the age of empires to the late 20th century</h1>
-            <SearchBarDesktop onSearch={onSearch}/>
+            <SearchBarDesktop onSearch={onSearch} advancedSearch={0}/>
           </div>
         </Media>
+        <div className={style.ImageText}>
+          Image from the Austrian social democratic journal <span>Woman</span>, mobilizing “Against Fascism”, 1933.
+        </div>
       </div>
     </AppLayout>
   )
