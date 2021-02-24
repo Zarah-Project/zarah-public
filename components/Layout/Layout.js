@@ -14,7 +14,7 @@ export default function AppLayout({ withBackground = false, children }) {
       <Media at="xs"><MobileMenu/></Media>
       <Media greaterThan="xs"><DesktopMenu/></Media>
       <Content
-        style={withBackground ? {background: 'url(/images/zarah-women-bg.png) no-repeat center bottom scroll', backgroundSize: 'cover'} : undefined}
+        style={withBackground ? {background: 'url(/images/zarah-women-bg.png) no-repeat center top scroll', backgroundSize: 'cover'} : undefined}
         className={style.Content}
       >
           {children}

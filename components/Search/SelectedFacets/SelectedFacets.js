@@ -22,9 +22,9 @@ const SelectedFacets = ({selectedFacets={}, onFacetRemove, onDateRangeFacetRemov
   };
 
   const renderDateFacet = (start, end) => (
-    <span className={style.Button} key={'temporal_coverage'}>
-      <span className={style.Label}>Temporal coverage:</span> {start} {end ? `- ${end}` : ''}
-      <a className={style.RemoveIcon} onClick={() => onDateRangeFacetRemove('year_coverage_start', 'year_coverage_end')}>
+    <span className={style.Button} key={'date'}>
+      <span className={style.Label}>Date:</span> {start} {end ? `- ${end}` : ''}
+      <a className={style.RemoveIcon} onClick={() => onDateRangeFacetRemove('year_start', 'year_end')}>
         <CloseOutlined/>
       </a>
     </span>
@@ -39,9 +39,9 @@ const SelectedFacets = ({selectedFacets={}, onFacetRemove, onDateRangeFacetRemov
           return renderFacetButton(key, value, 'Place', index);
         case 'subject':
           return renderFacetButton(key, value, 'Keyword', index);
-        case 'year_coverage_start':
-          return renderDateFacet(selectedFacets['year_coverage_start'], selectedFacets['year_coverage_end']);
-        case 'year_coverage_end':
+        case 'year_start':
+          return renderDateFacet(selectedFacets['year_start'], selectedFacets['year_end']);
+        case 'year_end':
           return '';
         default:
           return renderFacetButton(key, value, _.startCase(key), index)

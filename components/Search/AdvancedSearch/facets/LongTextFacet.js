@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { VariableSizeList as List } from 'react-window';
-import {Badge, Button, Typography, Skeleton, Spin, Tooltip, Popover} from 'antd';
+import { Typography } from 'antd';
 import facetStyle from "./TextFacet.module.css";
 const { Paragraph } = Typography;
 import { Input } from 'antd';

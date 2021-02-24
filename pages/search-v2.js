@@ -79,6 +79,29 @@ const Search = () => {
     })
   };
 
+  const onDateRangeFacetSelect = (dateRangeValues) => {
+    const newFacets = {...selectedFacets, ...dateRangeValues}
+    router.push({
+      pathname: '/search-v2', query: {
+        query: query,
+        limit: limit,
+        ...newFacets
+      }
+    })
+  };
+
+  const onDateRangeFacetRemove = (dateStartField, dateEndField) => {
+    delete selectedFacets[dateStartField];
+    delete selectedFacets[dateEndField];
+    router.push({
+      pathname: '/search-v2', query: {
+        query: query,
+        limit: limit,
+        ...selectedFacets
+      }
+    })
+  };
+
   const renderResults = () => (
     data.count > 0 ?
     <React.Fragment>
@@ -138,6 +161,8 @@ const Search = () => {
               facets={data ? data['facets'] : {}}
               onFacetSelect={onFacetSelect}
               onFacetRemove={onFacetRemove}
+              onDateRangeFacetSelect={onDateRangeFacetSelect}
+              onDateRangeFacetRemove={onDateRangeFacetRemove}
             />
           </div>
         </Media>

@@ -9,7 +9,7 @@ import SelectedFacets from "../SelectedFacets/SelectedFacets";
 import AdvancedSearchFilterBoxesV2 from "../AdvancedSearch/AdvancedSearchFilterBoxesV2";
 
 const SearchBarDesktop = ({onSearch, query, facets={}, selectedFacets={}, advancedSearch=1,
-                            onFacetSelect, onFacetRemove, ...props}) => {
+                            onFacetSelect, onFacetRemove, onDateRangeFacetSelect, onDateRangeFacetRemove, ...props}) => {
   const [queryString, setQueryString] = useState({query: ''});
 
   useEffect(() => {
@@ -55,6 +55,7 @@ const SearchBarDesktop = ({onSearch, query, facets={}, selectedFacets={}, advanc
         <SelectedFacets
           selectedFacets={selectedFacets}
           onFacetRemove={onFacetRemove}
+          onDateRangeFacetRemove={onDateRangeFacetRemove}
         />
       </Row>
       {advancedSearch === 1 &&
@@ -69,6 +70,8 @@ const SearchBarDesktop = ({onSearch, query, facets={}, selectedFacets={}, advanc
       <AdvancedSearchFilterBoxesV2
         onFacetSelect={onFacetSelect}
         onFacetRemove={onFacetRemove}
+        onDateRangeFacetSelect={onDateRangeFacetSelect}
+        onDateRangeFacetRemove={onDateRangeFacetRemove}
         selectedFacets={selectedFacets}
         facets={facets}
       />

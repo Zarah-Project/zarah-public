@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {Button, Card, Col, Row} from 'antd';
 import style from "./AdvancedSearchFilterBoxes.module.css";
 import LongTextFacet from "./facets/LongTextFacet";
-import { Tabs } from 'antd';
 import Collapse from "@kunukn/react-collapse";
+import DateRangeFacet from "./facets/DateRangeFacet";
 
-const { TabPane } = Tabs;
 
-const AdvancedSearchFilterBoxesV2 = ({ facets, selectedFacets, onFacetSelect, onFacetRemove }) => {
+const AdvancedSearchFilterBoxesV2 = ({ facets, selectedFacets, onFacetSelect, onFacetRemove,
+                                       onDateRangeFacetSelect, onDateRangeFacetRemove }) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeFacet, setActiveFacet] = useState('person');
 
@@ -22,6 +22,35 @@ const AdvancedSearchFilterBoxesV2 = ({ facets, selectedFacets, onFacetSelect, on
           facets={facets.hasOwnProperty('facet_fields') ? facets['facet_fields'][`${field}_facet`] : []}
         />
       </Card>
+    )
+  };
+
+  const renderDateFacet = () => {
+    const getDateRangeSelectedFacets = (startField, endField) => {
+      let startDate;
+      let endDate;
+
+      if (selectedFacets.hasOwnProperty(startField)) {
+        startDate = selectedFacets[startField];
+      }
+      if (selectedFacets.hasOwnProperty(endField)) {
+        endDate = selectedFacets[endField];
+      }
+      return [startDate, endDate]
+    };
+
+    return (
+      <DateRangeFacet
+        selectedFacets = {getDateRangeSelectedFacets('year_start', 'year_end')}
+        onSelect={(startValue, endValue) => {
+          onDateRangeFacetSelect({
+            'year_start': startValue,
+            'year_end': endValue
+          })
+        }}
+        onRemove={() => onDateRangeFacetRemove('year_start', 'year_end')}
+        facets={facets.hasOwnProperty('facet_fields') ? facets['facet_fields']['date_facet'] : []}
+      />
     )
   };
 
@@ -49,6 +78,11 @@ const AdvancedSearchFilterBoxesV2 = ({ facets, selectedFacets, onFacetSelect, on
               <div className={style.FilterBy}>
                 <h3>Filter By</h3>
                 <div className={style.SelectButtons}>
+                  <Button
+                    onClick={() => setActiveFacet('date')}
+                    className={activeFacet === 'date' ? style.ActiveButton : ''}>
+                    Date
+                  </Button>
                   <Button
                     onClick={() => setActiveFacet('person')}
                     className={activeFacet === 'person' ? style.ActiveButton : ''}>
@@ -125,6 +159,7 @@ const AdvancedSearchFilterBoxesV2 = ({ facets, selectedFacets, onFacetSelect, on
               {activeFacet === 'activist_repertoire_scale' ? renderTextFacet('Scale of repertoire actions', 'activist_repertoire_scale') : ''}
               {activeFacet === 'format_of_participation' ? renderTextFacet('Format of participation', 'format_of_participation') : ''}
               {activeFacet === 'knowledge_production' ? renderTextFacet('Communication and knowledge production', 'knowledge_production') : ''}
+              {activeFacet === 'date' ? renderDateFacet() : ''}
             </Col>
           </Row>
         </Collapse>
