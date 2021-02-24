@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import {API} from "../../utils/api";
 import Collapse from "@kunukn/react-collapse";
 import Link from "next/link";
+import Citation from "./Citation";
 
 const Document = ({data}) => {
   const [viewerOpen, setViewerOpen] = useState(false);
@@ -69,6 +70,7 @@ const Document = ({data}) => {
       }
     }
   };
+
 
   const renderData = (data, label, field, html=false, facet=false) => {
     const renderValue = (d) => {
@@ -212,6 +214,7 @@ const Document = ({data}) => {
           {displayClassificationField("Scale of repertoire actions", "activist_repertoire_scale")}
           {displayClassificationField("Format of participation", "format_of_participation")}
           {displayClassificationField("Communication and knowledge production", "knowledge_production")}
+          <Citation data={data}/>
         </Col>
         <Col xs={0} sm={2}/>
       </Row>

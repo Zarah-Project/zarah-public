@@ -16,7 +16,6 @@ const RecordPage = () => {
     const zoteroField = (field) => {
       if (data.hasOwnProperty('zotero_data')) {
         const zoteroObject = data['zotero_data'] !== "" ? JSON.parse(data['zotero_data']) : {};
-        console.log(zoteroObject)
         if (zoteroObject.hasOwnProperty(field)) {
           return zoteroObject[field]
         } else {
