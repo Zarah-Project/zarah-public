@@ -19,9 +19,9 @@ const LayoutFooter = () => {
           </div>
         </Col>
         <Col xs={24} lg={12}>
-          <div style={{display: 'flex', justifyContent: 'center'}}>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <div className={style.Image}>
-                <Image width={60} height={60} src='/images/eu-logo.png'/>
+                <Image width={40} height={40} src='/images/eu-logo.png'/>
               </div>
               <div className={style.Image} style={{borderLeft: '1px solid'}}>
                 <Image width={60} height={60} src='/images/erc-logo.png'/>
