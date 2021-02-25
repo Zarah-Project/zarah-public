@@ -6,7 +6,8 @@ const facetLabels = {
   abstract_search: 'Abstract',
   authority_search: 'Authority Entries',
   zotero_search: 'Zotero Data',
-  keyword_search: 'Classification'
+  classification_search: 'Assigned Metadata',
+  keyword_search: 'Keyword'
 };
 
 const Highlight = ({data}) => {
