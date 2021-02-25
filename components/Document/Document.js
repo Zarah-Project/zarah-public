@@ -214,7 +214,7 @@ const Document = ({data}) => {
           {displayClassificationField("Scale of repertoire actions", "activist_repertoire_scale")}
           {displayClassificationField("Format of participation", "format_of_participation")}
           {displayClassificationField("Communication and knowledge production", "knowledge_production")}
-          <Citation data={data}/>
+          <Citation documentID={data.id}/>
         </Col>
         <Col xs={0} sm={2}/>
       </Row>
