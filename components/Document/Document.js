@@ -46,7 +46,7 @@ const Document = ({data}) => {
       const cl = classifications.filter(c => c['category_key'] === field);
       const values = cl.map(c => c['field_type'] === 'tag' ? c['full_name'] : `Other: ${c['text']}`);
       if (values.length > 0) {
-        return renderData(values, label)
+        return renderData(values, label, field, false, true)
       }
     }
   };
@@ -74,29 +74,29 @@ const Document = ({data}) => {
 
   const renderData = (data, label, field, html=false, facet=false) => {
     const renderValue = (d) => {
-      const facet_field = `${field}_facet`;
+      const facet_field = `${field}`;
+      const content = html ? <div dangerouslySetInnerHTML={{ __html: d}}/> : d;
 
-      if (html) {
-        if (facet) {
-          return (
-            <React.Fragment>
-              <Link href={{
-                pathname: '/search',
-                query: {[facet_field]: d}
-              }}/>
-              <div dangerouslySetInnerHTML={{ __html: d}}/>
-              <br/>
-            </React.Fragment>
-          )
-        } else {
-          return (
-            <React.Fragment>
-              <div dangerouslySetInnerHTML={{ __html: d}}/>
-              <br/>
-            </React.Fragment>
-          )
-        }
+      if (facet && !content.includes('Other:')) {
+        return (
+          <React.Fragment>
+            <Link href={{
+              pathname: '/search',
+              query: {[facet_field]: d}
+            }}>
+              {content}
+            </Link>
+            <br/>
+          </React.Fragment>
+        )
+      } else {
+        return (
+          <React.Fragment>
+            {content}<br/>
+          </React.Fragment>
+        )
       }
+
     };
 
     if (Array.isArray(data)) {
@@ -105,13 +105,7 @@ const Document = ({data}) => {
           <dt>{label}</dt>
           <dd>
             {data.map((d) => (
-              html ?
-                <React.Fragment>
-                  <div dangerouslySetInnerHTML={{ __html: d}}/><br/>
-                </React.Fragment> :
-                <React.Fragment>
-                  {d}<br/>
-                </React.Fragment>
+              renderValue(d)
             ))}
           </dd>
         </dl>
@@ -122,7 +116,7 @@ const Document = ({data}) => {
           <dl>
             <dt>{label}</dt>
             <dd>
-              {html ? <div dangerouslySetInnerHTML={{ __html: data}}/> : data}
+              {renderValue(data)}
             </dd>
           </dl>
         )

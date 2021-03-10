@@ -1,4 +1,4 @@
-import {Col, Row, Spin} from "antd";
+import {Spin} from "antd";
 import style from "./Citation.module.css";
 import React from "react";
 import useSWR from "swr";
