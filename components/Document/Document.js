@@ -1,13 +1,16 @@
 import style from "./Document.module.css";
-import {Button, Col, Row} from "antd";
+import {Button, Col, Drawer, Row} from "antd";
 import React, {useState} from "react";
 import {API} from "../../utils/api";
 import Collapse from "@kunukn/react-collapse";
 import Link from "next/link";
 import Citation from "./Citation";
+import AuthorityRecord from "./AuthorityRecord";
 
 const Document = ({data}) => {
   const [viewerOpen, setViewerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectedRecord, setSelectedRecord] = useState({});
 
   const displayZoteroField = (label, zoteroField) => {
     if (data.hasOwnProperty('zotero_data')) {
@@ -51,6 +54,41 @@ const Document = ({data}) => {
     }
   };
 
+  const displayAuthorityField = (label, field, displayKey) => {
+    const displayAuthorityValue = (d, idx) => {
+      return (
+        <React.Fragment>
+          <a onClick={
+            () => {
+              setSelectedRecord({
+                drawerTitle: d[displayKey],
+                field: field,
+                record: d
+              });
+              setDrawerOpen(true);
+            }}>
+            {idx < data[field].length - 1 ? `${d[displayKey]}; ` : d[displayKey]}
+          </a>
+        </React.Fragment>
+      )
+    };
+
+    if (data.hasOwnProperty(field)) {
+      if (data[field].length > 0) {
+        return (
+          <dl>
+            <dt>{label}</dt>
+            <dd>
+              {data[field].map((d, idx) => (
+                  displayAuthorityValue(d, idx)
+              ))}
+            </dd>
+          </dl>
+        )
+      }
+    }
+  };
+
   const displayField = (label, field, html) => {
     return displayData(data, label, field, html);
   };
@@ -63,10 +101,10 @@ const Document = ({data}) => {
     }
   };
 
-  const displayArrayOfObjField = (label, field, key, facet=false) => {
+  const displayArrayOfObjField = (label, field, key) => {
     if (data.hasOwnProperty(field)) {
       if (data[field].length > 0) {
-        return renderData(data[field].map(d => d[key]).join("; "), label, field, false, facet)
+        return renderData(data[field].map(d => d[key]).join("; "), label, field)
       }
     }
   };
@@ -196,10 +234,10 @@ const Document = ({data}) => {
           {displayZoteroField("Archive Location", "archiveLocation")}
           {displayField("Abstract", "abstract", true)}
           {displayArrayField("Other keywords for document", "keywords")}
-          {displayArrayField("Events", "events")}
-          {displayArrayField("People", "people")}
-          {displayArrayOfObjField("Organizations", "organisations", "full_name")}
-          {displayArrayOfObjField("Places", "places", "full_name")}
+          {displayAuthorityField('Events', "events", 'event_full')}
+          {displayAuthorityField('People', "people", 'full_name')}
+          {displayAuthorityField('Organizations', "organisations", 'full_name')}
+          {displayAuthorityField('Places', "places", 'full_name')}
           {displayClassificationField("Historical context", "historical_context")}
           {displayClassificationField("Labour conditions", "labour_conditions")}
           {displayClassificationField("Living conditions", "living_conditions")}
@@ -212,6 +250,17 @@ const Document = ({data}) => {
         </Col>
         <Col xs={0} sm={2}/>
       </Row>
+      <Drawer
+        title={selectedRecord['drawerTitle']}
+        placement="right"
+        closable={true}
+        onClose={() => setDrawerOpen(false)}
+        width={'40%'}
+        visible={drawerOpen}
+        className={style.Drawer}
+      >
+        <AuthorityRecord record={selectedRecord} />
+      </Drawer>
     </div>
   )
 };

@@ -1,0 +1,31 @@
+
+.RecordWrapper dl {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.RecordWrapper dt {
+    flex: 1;
+    color: #c46076;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.RecordWrapper dd {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.OtherForms {
+    border-top: 1px dotted #EEE;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.FilterButton {
+    margin-top: 30px;
+    text-align: center;
+}

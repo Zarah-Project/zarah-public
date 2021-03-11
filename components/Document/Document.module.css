@@ -60,3 +60,13 @@
     margin-top: 20px !important;
     min-height: 100px;
 }
+
+
+.Drawer :global .ant-drawer-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    color: #c46076;
+    font-size: 30px;
+    line-height: 40px;
+    display: inline;
+}
