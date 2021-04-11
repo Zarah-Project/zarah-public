@@ -4,12 +4,10 @@ import { Form, Input } from 'formik-antd'
 import { SearchOutlined } from '@ant-design/icons';
 import style from "./SearchBarDesktop.module.css";
 import {Formik} from "formik";
-import AdvancedSearchFilterBoxes from "../AdvancedSearch/AdvancedSearchFilterBoxes";
 import SelectedFacets from "../SelectedFacets/SelectedFacets";
-import AdvancedSearchFilterBoxesV2 from "../AdvancedSearch/AdvancedSearchFilterBoxesV2";
+import AdvancedSearchFilterBoxes from "../AdvancedSearch/AdvancedSearchFilterBoxes";
 
-const SearchBarDesktop = ({onSearch, query, facets={}, selectedFacets={}, advancedSearch=1,
-                            onFacetSelect, onFacetRemove, onDateRangeFacetSelect, onDateRangeFacetRemove, ...props}) => {
+const SearchBarDesktop = ({onSearch, query, facets={}, selectedFacets={}, advancedSearch=1, onFacetSelect, onFacetRemove, onDateRangeFacetSelect, onDateRangeFacetRemove, ...props}) => {
   const [queryString, setQueryString] = useState({query: ''});
 
   useEffect(() => {
@@ -35,7 +33,12 @@ const SearchBarDesktop = ({onSearch, query, facets={}, selectedFacets={}, advanc
                   size="large"
                   style={{width: "100%"}}
                   allowClear={true}
-                  onChange={(e) => {setQueryString({query: e.target.value})}}
+                  onChange={(e) => {
+                    setQueryString({query: e.target.value})
+                    if (e.target.value === '') {
+                      props.submitForm()
+                    }
+                  }}
                 />
               </Col>
               <Col xs={4} sm={2} style={{textAlign: 'right'}}>
@@ -58,23 +61,16 @@ const SearchBarDesktop = ({onSearch, query, facets={}, selectedFacets={}, advanc
           onDateRangeFacetRemove={onDateRangeFacetRemove}
         />
       </Row>
-      {advancedSearch === 1 &&
-      <AdvancedSearchFilterBoxes
-        onFacetSelect={onFacetSelect}
-        onFacetRemove={onFacetRemove}
-        selectedFacets={selectedFacets}
-        facets={facets}
-      />
-      }
-      {advancedSearch === 2 &&
-      <AdvancedSearchFilterBoxesV2
-        onFacetSelect={onFacetSelect}
-        onFacetRemove={onFacetRemove}
-        onDateRangeFacetSelect={onDateRangeFacetSelect}
-        onDateRangeFacetRemove={onDateRangeFacetRemove}
-        selectedFacets={selectedFacets}
-        facets={facets}
-      />
+      {
+        advancedSearch > 0 &&
+        <AdvancedSearchFilterBoxes
+          onFacetSelect={onFacetSelect}
+          onFacetRemove={onFacetRemove}
+          onDateRangeFacetSelect={onDateRangeFacetSelect}
+          onDateRangeFacetRemove={onDateRangeFacetRemove}
+          selectedFacets={selectedFacets}
+          facets={facets}
+        />
       }
     </React.Fragment>
   )

@@ -55,6 +55,15 @@
 
 .SelectButtons {
     margin-top: 30px;
+    text-align: right;
+}
+
+.SelectButtons hr {
+    border-top: 1px solid #EEEEEE;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    margin-top: 3px;
 }
 
 .FilterBy h3 {

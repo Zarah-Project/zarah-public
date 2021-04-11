@@ -1,4 +1,4 @@
-import {Button, Card, Col, Row, Slider} from "antd";
+import {Button, Card, Col, InputNumber, Row, Slider} from "antd";
 import React, {useEffect, useState} from "react";
 import style from "./DateRangeFacet.module.css"
 import { CheckOutlined, UndoOutlined } from '@ant-design/icons';
@@ -76,9 +76,22 @@ const DateRangeFacet = ({facets, selectedFacets, onSelect, onRemove}) => {
             onChange={onChange}
           />
         </div>
-        <Row>
-          <Col xs={24} style={{textAlign: 'center'}}>
-            <span className={style.SliderValues}>{sliderValue[0]} - {sliderValue[1]}</span>
+        <Row gutter={[30]}>
+          <Col xs={6} offset={6} style={{textAlign: 'right'}}>
+            <InputNumber
+              min={min}
+              max={max}
+              value={sliderValue[0]}
+              onChange={(value) => onChange([value ? value : min, sliderValue[1]])}
+            />
+          </Col>
+          <Col xs={6}>
+            <InputNumber
+              min={min}
+              max={max}
+              value={sliderValue[1]}
+              onChange={(value) => onChange([sliderValue[0], value ? value : max])}
+            />
           </Col>
         </Row>
       </Card>
