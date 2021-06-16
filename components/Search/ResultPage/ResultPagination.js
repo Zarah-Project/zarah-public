@@ -11,7 +11,6 @@ const ResultPagination = ({count, limit=10, offset=0, onPageChange}) => {
             total={count}
             pageSize={limit ? limit : 10}
             showSizeChanger={true}
-            showTotal={(total, range) => `Showing ${range[0]}-${range[1]} of ${total} documents`}
             current={offset ? offset / limit + 1 : 1}
             onChange={onPageChange} />
         </div>
