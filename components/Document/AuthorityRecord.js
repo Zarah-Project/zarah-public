@@ -58,7 +58,7 @@ const AuthorityRecord = ({record}) => {
         {displayData(record['record'], 'Organization form scale (text)', 'organisation_form_scale_text')}
         {displayData(record['record'], 'Gendered membership', 'organisation_gendered_membership')}
         {displayData(record['record'], 'Gendered membership (text)', 'organisation_gendered_membership_text')}
-        {displayData(record['record'], 'Notes', 'notes')}
+        {displayData(record['record'], 'Notes', 'notes', true)}
       </React.Fragment>
     )
   };
