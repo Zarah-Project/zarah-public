@@ -41,7 +41,7 @@ const AuthorityRecord = ({record}) => {
     return (
       <React.Fragment>
         {displayData(record['record'], 'Name', 'full_name')}
-        {displayData(record['record'], 'Notes', 'notes')}
+        {displayData(record['record'], 'Notes', 'notes', true)}
         {record['record']['other_names'].length > 0 && getNames()}
       </React.Fragment>
     )
@@ -74,7 +74,7 @@ const AuthorityRecord = ({record}) => {
       <React.Fragment>
         {displayData(record['record'], 'Place', 'place_name')}
         {displayData(record['record'], 'Country', 'country')}
-        {displayData(record['record'], 'Notes', 'notes')}
+        {displayData(record['record'], 'Notes', 'notes', true)}
         {record['record']['other_names'].length > 0 && getNames()}
       </React.Fragment>
     )
@@ -85,7 +85,7 @@ const AuthorityRecord = ({record}) => {
       <React.Fragment>
         {displayData(record['record'], 'Event', 'event')}
         {displayData(record['record'], 'Date', 'date')}
-        {displayData(record['record'], 'Notes', 'notes')}
+        {displayData(record['record'], 'Notes', 'notes', true)}
       </React.Fragment>
     )
   };
