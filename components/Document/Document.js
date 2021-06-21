@@ -243,6 +243,7 @@ const Document = ({data}) => {
           {displayClassificationField("Living conditions", "living_conditions")}
           {displayClassificationField("Labour relations", "labour_relations")}
           {displayClassificationField("Repertoire action", "activist_repertoire")}
+          {displayClassificationField("Agendas", "agendas")}
           {displayClassificationField("Scale of repertoire actions", "activist_repertoire_scale")}
           {displayClassificationField("Format of participation", "format_of_participation")}
           {displayClassificationField("Communication and knowledge production", "knowledge_production")}
