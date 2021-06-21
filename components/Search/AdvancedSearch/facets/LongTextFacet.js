@@ -87,7 +87,7 @@ const TextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove}) =
   };
 
   const getItemSize = index => {
-    return (Math.floor(facetData[index]['text'].length / 70) + 1) * 25;
+    return (Math.floor(facetData[index]['text'].length / 78) + 1) * 25;
   };
 
   if (facets.length > 0) {

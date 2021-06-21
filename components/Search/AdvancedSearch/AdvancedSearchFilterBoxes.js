@@ -107,6 +107,27 @@ const AdvancedSearchFilterBoxes = ({ facets, selectedFacets, onFacetSelect, onFa
                   </Button>
                   <hr/>
                   <Button
+                    onClick={() => setActiveFacet('archive')}
+                    className={activeFacet === 'archive' ? style.ActiveButton : ''}>
+                    Archive ({getCounter('archive')})
+                  </Button>
+                  <Button
+                    onClick={() => setActiveFacet('language')}
+                    className={activeFacet === 'language' ? style.ActiveButton : ''}>
+                    Language ({getCounter('language')})
+                  </Button>
+                  <Button
+                    onClick={() => setActiveFacet('author')}
+                    className={activeFacet === 'author' ? style.ActiveButton : ''}>
+                    Author ({getCounter('author')})
+                  </Button>
+                  <Button
+                    onClick={() => setActiveFacet('item_type')}
+                    className={activeFacet === 'item_type' ? style.ActiveButton : ''}>
+                    Item Type ({getCounter('item_type')})
+                  </Button>
+                  <hr/>
+                  <Button
                     onClick={() => setActiveFacet('historical_context')}
                     className={activeFacet === 'historical_context' ? style.ActiveButton : ''}>
                     Historical context ({getCounter('historical_context')})
@@ -154,6 +175,10 @@ const AdvancedSearchFilterBoxes = ({ facets, selectedFacets, onFacetSelect, onFa
               {activeFacet === 'organisation' ? renderTextFacet('Organizations', 'organisation', true) : ''}
               {activeFacet === 'event' ? renderTextFacet('Events', 'event', true) : ''}
               {activeFacet === 'place' ? renderTextFacet('Places', 'place', true) : ''}
+              {activeFacet === 'archive' ? renderTextFacet('Archive', 'archive', true) : ''}
+              {activeFacet === 'language' ? renderTextFacet('Language', 'language', true) : ''}
+              {activeFacet === 'item_type' ? renderTextFacet('Item Type', 'item_type', true) : ''}
+              {activeFacet === 'author' ? renderTextFacet('Author', 'author', true) : ''}
               {activeFacet === 'historical_context' ? renderTextFacet('Historical context', 'historical_context') : ''}
               {activeFacet === 'labour_conditions' ? renderTextFacet('Labour conditions', 'labour_conditions') : ''}
               {activeFacet === 'living_conditions' ? renderTextFacet('Living conditions', 'living_conditions') : ''}
