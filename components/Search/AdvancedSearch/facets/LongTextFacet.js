@@ -105,7 +105,7 @@ const TextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove}) =
           </div>
         }
         <List
-          height={200}
+          height={300}
           itemCount={facetData.length}
           itemSize={getItemSize}
           width={'95%'}
