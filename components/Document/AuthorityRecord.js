@@ -24,7 +24,7 @@ const AuthorityRecord = ({record}) => {
         <dl>
           <dt>Other forms of name</dt>
           <dd>
-            {data.map((n) => (n))}<br/>
+            {data.map(n => (<div>{n}</div>))}
           </dd>
         </dl>
       </div>
