@@ -158,6 +158,11 @@ const AdvancedSearchFilterBoxes = ({ facets, selectedFacets, onFacetSelect, onFa
                     Scale of repertoire actions ({getCounter('activist_repertoire_scale')})
                   </Button>
                   <Button
+                    onClick={() => setActiveFacet('agendas')}
+                    className={activeFacet === 'agendas' ? style.ActiveButton : ''}>
+                    Agendas ({getCounter('agendas')})
+                  </Button>
+                  <Button
                     onClick={() => setActiveFacet('format_of_participation')}
                     className={activeFacet === 'format_of_participation' ? style.ActiveButton : ''}>
                     Format of participation ({getCounter('format_of_participation')})
@@ -185,6 +190,7 @@ const AdvancedSearchFilterBoxes = ({ facets, selectedFacets, onFacetSelect, onFa
               {activeFacet === 'labour_relations' ? renderTextFacet('Labour relations', 'labour_relations') : ''}
               {activeFacet === 'activist_repertoire' ? renderTextFacet('Repertoire Action', 'activist_repertoire') : ''}
               {activeFacet === 'activist_repertoire_scale' ? renderTextFacet('Scale of repertoire actions', 'activist_repertoire_scale') : ''}
+              {activeFacet === 'agendas' ? renderTextFacet('Agendas', 'agendas') : ''}
               {activeFacet === 'format_of_participation' ? renderTextFacet('Format of participation', 'format_of_participation') : ''}
               {activeFacet === 'knowledge_production' ? renderTextFacet('Communication and knowledge production', 'knowledge_production') : ''}
               {activeFacet === 'date' ? renderDateFacet() : ''}
