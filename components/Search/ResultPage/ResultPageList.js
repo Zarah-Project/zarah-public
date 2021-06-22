@@ -78,7 +78,7 @@ const ResultPageList = ({data, highlights}) => {
         <div className={style.ResultItemData}>
           <div className={style.Title}>
             <a href={`/document/${d.id}`}>
-              {renderTitle(d)}
+              {d['title']}
             </a>
           </div>
           <div>

@@ -36,7 +36,7 @@ const SearchBarDesktop = ({onSearch, query, facets={}, selectedFacets={}, advanc
                   onChange={(e) => {
                     setQueryString({query: e.target.value})
                     if (e.target.value === '') {
-                      props.submitForm()
+                      submitForm()
                     }
                   }}
                 />
