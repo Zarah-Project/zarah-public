@@ -13,7 +13,7 @@ const Citation = ({documentID}) => {
         data ?
           <div className={style.CitationBox}>
             <dl>
-              <dt>Suggested Citation</dt>
+              <dt>Citation</dt>
               <dd>
                 <div dangerouslySetInnerHTML={{ __html: data['citation']}}/>
               </dd>
