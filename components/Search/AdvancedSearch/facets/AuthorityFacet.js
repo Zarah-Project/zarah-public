@@ -54,7 +54,7 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
           <div className={facetStyle.FacetWrapper}>
             <Paragraph className={facetStyle.LongFacetActiveText}>
               {facetText}
-              <a className={facetStyle.AdditionalInfo} onClick={() => onSelect(facetText)}>
+              <a className={facetStyle.AdditionalInfo} onClick={() => onSelect(facetText)} title="Click to view additional information">
                 [<span>+</span>]
               </a>
             </Paragraph>
@@ -74,7 +74,7 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
               <a className={facetStyle.FacetLink} onClick={() => onSelect(facetText)}>
                 {facetText}
               </a>
-              <a className={facetStyle.AdditionalInfo} onClick={() => onFacetClick(facetID, facetText)}>
+              <a className={facetStyle.AdditionalInfo} onClick={() => onFacetClick(facetID, facetText)} title="Click to view additional information">
                 [<span>+</span>]
               </a>
             </Paragraph>
