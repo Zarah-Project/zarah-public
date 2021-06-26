@@ -54,6 +54,9 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
           <div className={facetStyle.FacetWrapper}>
             <Paragraph className={facetStyle.LongFacetActiveText}>
               {facetText}
+              <a className={facetStyle.AdditionalInfo} onClick={() => onSelect(facetText)}>
+                [<span>+</span>]
+              </a>
             </Paragraph>
             <Paragraph className={facetStyle.FacetRemove}>
               <a className={facetStyle.FacetRemoveLink} onClick={() => onFacetRemoveClick(facetText)}>
@@ -68,8 +71,11 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
         <div style={style}>
           <div className={facetStyle.FacetWrapper}>
             <Paragraph className={facetStyle.LongFacetText}>
-              <a className={facetStyle.FacetLink} onClick={() => onFacetClick(facetID, facetText)}>
+              <a className={facetStyle.FacetLink} onClick={() => onSelect(facetText)}>
                 {facetText}
+              </a>
+              <a className={facetStyle.AdditionalInfo} onClick={() => onFacetClick(facetID, facetText)}>
+                [<span>+</span>]
               </a>
             </Paragraph>
             <Paragraph className={facetStyle.FacetNumber}>

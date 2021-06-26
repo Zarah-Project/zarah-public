@@ -39,6 +39,14 @@
     padding-right: 15px;
 }
 
+.AdditionalInfo {
+    margin-left: 5px;
+}
+
+.AdditionalInfo span {
+    color: #050505 !important;
+}
+
 .FacetLink {
     cursor: pointer;
 }
