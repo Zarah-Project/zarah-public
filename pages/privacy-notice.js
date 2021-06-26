@@ -8,7 +8,7 @@ export default function PrivacyNotice() {
   return (
     <AppLayout withBackground={true}>
       <Head>
-        <title>ZARAH - Privacy Notice</title>
+        <title>ZARAH DB - Privacy Notice</title>
       </Head>
       <div className="container">
         <div className={style.Wrap}>

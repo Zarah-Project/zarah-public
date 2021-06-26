@@ -8,7 +8,7 @@ export default function Imprint() {
   return (
     <AppLayout withBackground={true}>
       <Head>
-        <title>ZARAH - Imprint</title>
+        <title>ZARAH DB - Imprint</title>
       </Head>
       <div className="container">
         <div className={style.Wrap}>

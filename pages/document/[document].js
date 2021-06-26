@@ -45,7 +45,7 @@ const RecordPage = () => {
   return (
     <AppLayout withBackground={true}>
       <Head>
-        <title>{data ? `ZARAH DB - ${data.title}` : 'ZARAH'}</title>
+        <title>{data ? `ZARAH DB - ${data.title}` : 'ZARAH DB'}</title>
         {renderMeta(data)}
       </Head>
       <div className="container">

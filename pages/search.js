@@ -139,7 +139,7 @@ const Search = () => {
   return (
     <AppLayout withBackground={true}>
       <Head>
-        <title>ZARAH - Search</title>
+        <title>ZARAH DB - Search</title>
       </Head>
       <div className="container">
         <Media at="xs">

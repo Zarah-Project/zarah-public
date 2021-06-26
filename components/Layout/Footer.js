@@ -34,6 +34,7 @@ const LayoutFooter = () => {
         <Col xs={24} lg={6}>
           <div className={style.FooterLinks}>
             <Link href={'/privacy-notice'}>Privacy Notice</Link><br/>
+            <Link href={'/terms-of-use'}>Terms of Use</Link><br/>
             <Link href={'/imprint'}>Imprint</Link>
           </div>
         </Col>
