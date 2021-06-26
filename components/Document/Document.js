@@ -6,8 +6,11 @@ import Collapse from "@kunukn/react-collapse";
 import Link from "next/link";
 import Citation from "./Citation";
 import AuthorityRecord from "./AuthorityRecord";
+import {useRouter} from "next/router";
 
 const Document = ({data}) => {
+  const router = useRouter()
+
   const [viewerOpen, setViewerOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState({});
@@ -63,7 +66,8 @@ const Document = ({data}) => {
               setSelectedRecord({
                 drawerTitle: d[displayKey],
                 field: field,
-                record: d
+                id: d.id,
+                recordType: field,
               });
               setDrawerOpen(true);
             }}>
@@ -202,6 +206,14 @@ const Document = ({data}) => {
     }
   };
 
+  const onFilter = (value, field) => {
+    setDrawerOpen(false);
+    router.push({
+      pathname: '/search',
+      query: {[field]: value}
+    })
+  };
+
   return (
     <div className={style.RecordWrap}>
       <Row>
@@ -235,7 +247,7 @@ const Document = ({data}) => {
           {displayField("Abstract", "abstract", true)}
           {displayArrayField("Other keywords for document", "keywords")}
           {displayAuthorityField('Events', "events", 'event_full')}
-          {displayAuthorityField('People', "people", 'full_name')}
+          {displayAuthorityField('People', "people", 'place_full')}
           {displayAuthorityField('Organizations', "organisations", 'full_name')}
           {displayAuthorityField('Places', "places", 'full_name')}
           {displayClassificationField("Historical context", "historical_context")}
@@ -260,7 +272,7 @@ const Document = ({data}) => {
         visible={drawerOpen}
         className={style.Drawer}
       >
-        <AuthorityRecord record={selectedRecord} />
+        <AuthorityRecord record={selectedRecord} onFilter={onFilter} />
       </Drawer>
     </div>
   )

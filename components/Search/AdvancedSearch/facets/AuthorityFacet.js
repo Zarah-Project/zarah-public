@@ -1,18 +1,22 @@
 import React, {useState, useEffect} from "react";
 import { VariableSizeList as List } from 'react-window';
-import { Typography } from 'antd';
+import {Drawer, Typography} from 'antd';
 import facetStyle from "./TextFacet.module.css";
 const { Paragraph } = Typography;
 import { Input } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import EmptyFacet from "./EmptyFacet";
+import style from "../../../Document/Document.module.css";
+import AuthorityRecord from "../../../Document/AuthorityRecord";
 
 const { Search } = Input;
 
-const LongTextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove}) => {
+const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, onRemove}) => {
   const [filterValue, setFilterValue] = useState('');
   const [facetOriginalData, setFacetOriginalData] = useState([]);
   const [facetData, setFacetData] = useState([]);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectedRecord, setSelectedRecord] = useState({});
 
   useEffect(() => {
     facetInit();
@@ -41,15 +45,18 @@ const LongTextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove
   };
 
   const Row = ({ index, style }) => {
-    if (selectedFacets.includes(facetData[index]['text'])) {
+    const facetText = facetData[index]['text'].substring(0, facetData[index]['text'].lastIndexOf("#"));
+    const facetID = facetData[index]['text'].substring(facetData[index]['text'].lastIndexOf("#") + 1);
+
+    if (selectedFacets.includes(facetText)) {
       return (
         <div style={style}>
           <div className={facetStyle.FacetWrapper}>
             <Paragraph className={facetStyle.LongFacetActiveText}>
-              {facetData[index]['text']}
+              {facetText}
             </Paragraph>
             <Paragraph className={facetStyle.FacetRemove}>
-              <a className={facetStyle.FacetRemoveLink} onClick={() => onFacetRemoveClick(facetData[index]['text'])}>
+              <a className={facetStyle.FacetRemoveLink} onClick={() => onFacetRemoveClick(facetText)}>
                 <CloseOutlined />
               </a>
             </Paragraph>
@@ -61,8 +68,8 @@ const LongTextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove
         <div style={style}>
           <div className={facetStyle.FacetWrapper}>
             <Paragraph className={facetStyle.LongFacetText}>
-              <a className={facetStyle.FacetLink} onClick={() => onFacetClick(facetData[index]['text'])}>
-                {facetData[index]['text']}
+              <a className={facetStyle.FacetLink} onClick={() => onFacetClick(facetID, facetText)}>
+                {facetText}
               </a>
             </Paragraph>
             <Paragraph className={facetStyle.FacetNumber}>
@@ -74,8 +81,32 @@ const LongTextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove
     }
   };
 
-  const onFacetClick = (value) => {
-    onSelect(value)
+  const onFacetClick = (facetID, facetText) => {
+    let api = '';
+    switch (field) {
+      case 'person':
+        api = 'people';
+        break;
+      case 'organisation':
+        api = 'organisations';
+        break;
+      case 'event':
+        api = 'events';
+        break;
+      case 'place':
+        api = 'places';
+        break;
+      default:
+        break;
+    }
+
+    setSelectedRecord({
+      drawerTitle: facetText,
+      field: api,
+      id: facetID,
+      recordType: api,
+    });
+    setDrawerOpen(true);
   };
 
   const onFacetRemoveClick = (value) => {
@@ -84,6 +115,11 @@ const LongTextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove
 
   const onSearch = (value) => {
     setFilterValue(value);
+  };
+
+  const onFilter = (value, field) => {
+    setDrawerOpen(false);
+    onSelect(value);
   };
 
   const getItemSize = index => {
@@ -113,6 +149,17 @@ const LongTextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove
         >
           {Row}
         </List>
+        <Drawer
+          title={selectedRecord['drawerTitle']}
+          placement="right"
+          closable={true}
+          onClose={() => setDrawerOpen(false)}
+          width={'40%'}
+          visible={drawerOpen}
+          className={style.Drawer}
+        >
+          <AuthorityRecord record={selectedRecord} onFilter={onFilter} />
+        </Drawer>
       </React.Fragment>
     )
   } else {
@@ -122,4 +169,4 @@ const LongTextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove
   }
 };
 
-export default LongTextFacet;
+export default AuthorityFacet;

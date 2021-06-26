@@ -4,6 +4,7 @@ import style from "./AdvancedSearchFilterBoxes.module.css";
 import LongTextFacet from "./facets/LongTextFacet";
 import Collapse from "@kunukn/react-collapse";
 import DateRangeFacet from "./facets/DateRangeFacet";
+import AuthorityFacet from "./facets/AuthorityFacet";
 
 
 const AdvancedSearchFilterBoxes = ({ facets, selectedFacets, onFacetSelect, onFacetRemove,
@@ -20,6 +21,21 @@ const AdvancedSearchFilterBoxes = ({ facets, selectedFacets, onFacetSelect, onFa
           onSelect={(value) => {onFacetSelect(field, value)}}
           onRemove={(value) => {onFacetRemove(field, value)}}
           facets={facets.hasOwnProperty('facet_fields') ? facets['facet_fields'][`${field}_facet`] : []}
+        />
+      </Card>
+    )
+  };
+
+  const renderAuthorityFacet = (label, field, search=false) => {
+    return (
+      <Card title={label} bordered={false} style={{ width: '100%' }} className={style.FacetCard}>
+        <AuthorityFacet
+          field={field}
+          search={search}
+          selectedFacets = {selectedFacets.hasOwnProperty(field) ? selectedFacets[field] : []}
+          onSelect={(value) => {onFacetSelect(field, value)}}
+          onRemove={(value) => {onFacetRemove(field, value)}}
+          facets={facets.hasOwnProperty('facet_fields') ? facets['facet_fields'][`${field}_id_facet`] : []}
         />
       </Card>
     )
@@ -176,10 +192,10 @@ const AdvancedSearchFilterBoxes = ({ facets, selectedFacets, onFacetSelect, onFa
               </div>
             </Col>
             <Col xs={24} lg={14}>
-              {activeFacet === 'person' ? renderTextFacet('People', 'person', true) : ''}
-              {activeFacet === 'organisation' ? renderTextFacet('Organizations', 'organisation', true) : ''}
-              {activeFacet === 'event' ? renderTextFacet('Events', 'event', true) : ''}
-              {activeFacet === 'place' ? renderTextFacet('Places', 'place', true) : ''}
+              {activeFacet === 'person' ? renderAuthorityFacet('People', 'person', true) : ''}
+              {activeFacet === 'organisation' ? renderAuthorityFacet('Organizations', 'organisation', true) : ''}
+              {activeFacet === 'event' ? renderAuthorityFacet('Events', 'event', true) : ''}
+              {activeFacet === 'place' ? renderAuthorityFacet('Places', 'place', true) : ''}
               {activeFacet === 'archive' ? renderTextFacet('Archive', 'archive', true) : ''}
               {activeFacet === 'language' ? renderTextFacet('Language', 'language', true) : ''}
               {activeFacet === 'item_type' ? renderTextFacet('Item Type', 'item_type', true) : ''}
