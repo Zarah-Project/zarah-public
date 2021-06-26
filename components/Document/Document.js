@@ -247,7 +247,7 @@ const Document = ({data}) => {
           {displayField("Abstract", "abstract", true)}
           {displayArrayField("Other keywords for document", "keywords")}
           {displayAuthorityField('Events', "events", 'event_full')}
-          {displayAuthorityField('People', "people", 'place_full')}
+          {displayAuthorityField('People', "people", 'full_name')}
           {displayAuthorityField('Organizations', "organisations", 'full_name')}
           {displayAuthorityField('Places', "places", 'full_name')}
           {displayClassificationField("Historical context", "historical_context")}
