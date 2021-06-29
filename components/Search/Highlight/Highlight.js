@@ -5,7 +5,7 @@ const facetLabels = {
   title_search: 'Title',
   attachment_text_search: 'PDF',
   abstract_search: 'Abstract',
-  authority_search: 'Authority Entries',
+  authority_search: 'Special Records',
   zotero_search: 'Zotero Data',
   classification_search: 'Assigned Metadata',
   keyword_search: 'Keyword'
