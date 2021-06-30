@@ -2,7 +2,7 @@ import Popup from "reactjs-popup";
 import style from "./MobileMenu.module.css";
 import Link from "next/link";
 import React from "react";
-import {Col, Layout, Row} from "antd";
+import {Col, Layout, Menu, Row} from "antd";
 import Image from "next/image";
 
 const {Header} = Layout;
@@ -40,10 +40,10 @@ const MobileMenu = () => {
             {close => (
               <div className={style.PopupMenu}>
                 <ul>
-                  <li onClick={close}><Link href={'/search'}>Search</Link></li>
-                  <li onClick={close}><Link href={'/timeline'}>Timeline</Link></li>
-                  <li onClick={close}><Link href={'/collections'}>Collections</Link></li>
-                  <li onClick={close}><Link href={'/about'}>About</Link></li>
+                  <li onClick={close}><Link href={'/search'}>DATABASE</Link></li>
+                  <li onClick={close}><Link href={'/for-researchers'}>FOR RESEARCHERS</Link></li>
+                  <li onClick={close}><Link href={'/data'}>DATA</Link></li>
+                  <li onClick={close}><Link href={'/about'}>ABOUT</Link></li>
                 </ul>
               </div>
             )}

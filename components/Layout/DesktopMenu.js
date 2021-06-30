@@ -23,7 +23,7 @@ const DesktopMenu = () => {
               <Link href={'/search'}>DATABASE</Link>
             </Menu.Item>
             <Menu.Item className={style.MenuItem} key="timeline">
-              <Link href={'/researchers'}>FOR RESEARCHERS</Link>
+              <Link href={'/for-researchers'}>FOR RESEARCHERS</Link>
             </Menu.Item>
             <Menu.Item className={style.MenuItem} key="collections">
               <Link href={'/data'}>DATA</Link>
