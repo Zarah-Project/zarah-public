@@ -56,7 +56,7 @@
 }
 
 .Search {
-    margin: 5px 10px;
+    margin: 5px 0px;
 }
 
 .LongFacetActiveText {
@@ -65,12 +65,14 @@
     font-weight: 600;
     flex-grow: 1;
     padding-left: 5px;
+    margin-bottom: 0 !important;
 }
 
 .LongFacetText {
     flex-grow: 1;
     font-size: 14px;
     padding-left: 5px;
+    margin-bottom: 0 !important;
 }
 
 .FacetLink:hover {

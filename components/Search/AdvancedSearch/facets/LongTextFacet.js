@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { VariableSizeList as List } from 'react-window';
+import {AutoSizer, CellMeasurer, CellMeasurerCache, List} from 'react-virtualized';
 import { Typography } from 'antd';
 import facetStyle from "./TextFacet.module.css";
 const { Paragraph } = Typography;
@@ -13,6 +13,12 @@ const LongTextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove
   const [filterValue, setFilterValue] = useState('');
   const [facetOriginalData, setFacetOriginalData] = useState([]);
   const [facetData, setFacetData] = useState([]);
+
+  const cache = new CellMeasurerCache({
+    fixedWidth: true,
+    defaultHeight: 25,
+    minHeight: 25
+  });
 
   useEffect(() => {
     facetInit();
@@ -40,36 +46,52 @@ const LongTextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove
     setFacetData(fData);
   };
 
-  const Row = ({ index, style }) => {
+  const renderRow = ({ index, key, style, parent }) => {
     if (selectedFacets.includes(facetData[index]['text'])) {
       return (
-        <div style={style}>
-          <div className={facetStyle.FacetWrapper}>
-            <Paragraph className={facetStyle.LongFacetActiveText}>
-              {facetData[index]['text']}
-            </Paragraph>
-            <Paragraph className={facetStyle.FacetRemove}>
-              <a className={facetStyle.FacetRemoveLink} onClick={() => onFacetRemoveClick(facetData[index]['text'])}>
-                <CloseOutlined />
-              </a>
-            </Paragraph>
+        <CellMeasurer
+          key={key}
+          cache={cache}
+          parent={parent}
+          columnIndex={0}
+          rowIndex={index}
+        >
+          <div key={key} style={style}>
+            <div className={facetStyle.FacetWrapper}>
+              <span className={facetStyle.LongFacetActiveText}>
+                {facetData[index]['text']}
+              </span>
+              <span className={facetStyle.FacetRemove}>
+                <a className={facetStyle.FacetRemoveLink} onClick={() => onFacetRemoveClick(facetData[index]['text'])}>
+                  <CloseOutlined />
+                </a>
+              </span>
+            </div>
           </div>
-        </div>
+        </CellMeasurer>
       )
     } else {
       return (
-        <div style={style}>
-          <div className={facetStyle.FacetWrapper}>
-            <Paragraph className={facetStyle.LongFacetText}>
-              <a className={facetStyle.FacetLink} onClick={() => onFacetClick(facetData[index]['text'])}>
-                {facetData[index]['text']}
-              </a>
-            </Paragraph>
-            <Paragraph className={facetStyle.FacetNumber}>
-              ({facetData[index]['count']})
-            </Paragraph>
+        <CellMeasurer
+          key={key}
+          cache={cache}
+          parent={parent}
+          columnIndex={0}
+          rowIndex={index}
+        >
+          <div key={key} style={style}>
+            <div className={facetStyle.FacetWrapper}>
+              <span className={facetStyle.LongFacetText}>
+                <a className={facetStyle.FacetLink} onClick={() => onFacetClick(facetData[index]['text'])}>
+                  {facetData[index]['text']}
+                </a>
+              </span>
+              <span className={facetStyle.FacetNumber}>
+                ({facetData[index]['count']})
+              </span>
+            </div>
           </div>
-        </div>
+        </CellMeasurer>
       )
     }
   };
@@ -86,10 +108,6 @@ const LongTextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove
     setFilterValue(value);
   };
 
-  const getItemSize = index => {
-    return (Math.floor(facetData[index]['text'].length / 78) + 1) * 25;
-  };
-
   if (facets.length > 0) {
     return(
       <React.Fragment>
@@ -104,15 +122,21 @@ const LongTextFacet = ({facets, selectedFacets, search=false, onSelect, onRemove
             />
           </div>
         }
-        <List
-          height={300}
-          itemCount={facetData.length}
-          itemSize={getItemSize}
-          width={'95%'}
-          style={{marginLeft: '10px', marginTop: '10px'}}
-        >
-          {Row}
-        </List>
+        <div style={{height: '300px'}}>
+          <AutoSizer>
+            {({ width }) => (
+              <List
+                width={width}
+                height={300}
+                deferredMeasurementCache={cache}
+                rowCount={facetData.length}
+                rowHeight={cache.rowHeight}
+                rowRenderer={renderRow}
+                overscanRowCount={3}
+              />
+            )}
+          </AutoSizer>
+        </div>
       </React.Fragment>
     )
   } else {

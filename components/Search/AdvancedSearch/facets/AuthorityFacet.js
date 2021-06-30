@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { VariableSizeList as List } from 'react-window';
+import {AutoSizer, CellMeasurer, CellMeasurerCache, List} from 'react-virtualized';
 import {Drawer, Typography} from 'antd';
 import facetStyle from "./TextFacet.module.css";
 const { Paragraph } = Typography;
@@ -17,6 +17,12 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
   const [facetData, setFacetData] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState({});
+
+  const cache = new CellMeasurerCache({
+    fixedWidth: true,
+    defaultHeight: 25,
+    minHeight: 25
+  });
 
   useEffect(() => {
     facetInit();
@@ -44,45 +50,61 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
     setFacetData(fData);
   };
 
-  const Row = ({ index, style }) => {
+  const renderRow = ({ index, key, style, parent }) => {
     const facetText = facetData[index]['text'].substring(0, facetData[index]['text'].lastIndexOf("#"));
     const facetID = facetData[index]['text'].substring(facetData[index]['text'].lastIndexOf("#") + 1);
 
     if (selectedFacets.includes(facetText)) {
       return (
-        <div style={style}>
-          <div className={facetStyle.FacetWrapper}>
-            <Paragraph className={facetStyle.LongFacetActiveText}>
-              {facetText}
-              <a className={facetStyle.AdditionalInfo} onClick={() => onFacetClick(facetID, facetText)} title="Click to view additional information">
-                [<span>+</span>]
-              </a>
-            </Paragraph>
-            <Paragraph className={facetStyle.FacetRemove}>
-              <a className={facetStyle.FacetRemoveLink} onClick={() => onFacetRemoveClick(facetText)}>
-                <CloseOutlined />
-              </a>
-            </Paragraph>
+        <CellMeasurer
+          key={key}
+          cache={cache}
+          parent={parent}
+          columnIndex={0}
+          rowIndex={index}
+        >
+          <div style={style}>
+            <div className={facetStyle.FacetWrapper}>
+              <span className={facetStyle.LongFacetActiveText}>
+                {facetText}
+                <a className={facetStyle.AdditionalInfo} onClick={() => onFacetClick(facetID, facetText)} title="Click to view additional information">
+                  [<span>+</span>]
+                </a>
+              </span>
+              <span className={facetStyle.FacetRemove}>
+                <a className={facetStyle.FacetRemoveLink} onClick={() => onFacetRemoveClick(facetText)}>
+                  <CloseOutlined />
+                </a>
+              </span>
+            </div>
           </div>
-        </div>
+        </CellMeasurer>
       )
     } else {
       return (
-        <div style={style}>
-          <div className={facetStyle.FacetWrapper}>
-            <Paragraph className={facetStyle.LongFacetText}>
-              <a className={facetStyle.FacetLink} onClick={() => onSelect(facetText)}>
-                {facetText}
-              </a>
-              <a className={facetStyle.AdditionalInfo} onClick={() => onFacetClick(facetID, facetText)} title="Click to view additional information">
-                [<span>+</span>]
-              </a>
-            </Paragraph>
-            <Paragraph className={facetStyle.FacetNumber}>
-              ({facetData[index]['count']})
-            </Paragraph>
+        <CellMeasurer
+          key={key}
+          cache={cache}
+          parent={parent}
+          columnIndex={0}
+          rowIndex={index}
+        >
+          <div style={style}>
+            <div className={facetStyle.FacetWrapper}>
+              <span className={facetStyle.LongFacetText}>
+                <a className={facetStyle.FacetLink} onClick={() => onSelect(facetText)}>
+                  {facetText}
+                </a>
+                <a className={facetStyle.AdditionalInfo} onClick={() => onFacetClick(facetID, facetText)} title="Click to view additional information">
+                  [<span>+</span>]
+                </a>
+              </span>
+              <span className={facetStyle.FacetNumber}>
+                ({facetData[index]['count']})
+              </span>
+            </div>
           </div>
-        </div>
+        </CellMeasurer>
       )
     }
   };
@@ -128,10 +150,6 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
     onSelect(value);
   };
 
-  const getItemSize = index => {
-    return (Math.floor(facetData[index]['text'].length / 78) + 1) * 25;
-  };
-
   if (facets.length > 0) {
     return(
       <React.Fragment>
@@ -146,15 +164,21 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
             />
           </div>
         }
-        <List
-          height={300}
-          itemCount={facetData.length}
-          itemSize={getItemSize}
-          width={'95%'}
-          style={{marginLeft: '10px', marginTop: '10px'}}
-        >
-          {Row}
-        </List>
+        <div style={{height: '300px'}}>
+          <AutoSizer>
+            {({ width }) => (
+              <List
+                width={width}
+                height={300}
+                deferredMeasurementCache={cache}
+                rowCount={facetData.length}
+                rowHeight={cache.rowHeight}
+                rowRenderer={renderRow}
+                overscanRowCount={3}
+              />
+            )}
+          </AutoSizer>
+        </div>
         <Drawer
           title={selectedRecord['drawerTitle']}
           placement="right"
