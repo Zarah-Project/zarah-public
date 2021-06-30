@@ -9,7 +9,7 @@ import AuthorityRecord from "./AuthorityRecord";
 import {useRouter} from "next/router";
 
 const Document = ({data}) => {
-  const router = useRouter()
+  const router = useRouter();
 
   const [viewerOpen, setViewerOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -23,7 +23,11 @@ const Document = ({data}) => {
           let d = "";
           if (zoteroObject.hasOwnProperty('creators')) {
             const authors = zoteroObject['creators'].map((creator) => {
-              return `${creator['firstName']} ${creator['lastName']} (${creator['creatorType']})`
+              if (creator.hasOwnProperty('name')) {
+                return `${creator['name']} (${creator['creatorType']})`
+              } else {
+                return `${creator['firstName']} ${creator['lastName']} (${creator['creatorType']})`
+              }
             });
             d = authors.join('; ');
           }
