@@ -109,15 +109,6 @@ const Document = ({data}) => {
     }
   };
 
-  const displayArrayOfObjField = (label, field, key) => {
-    if (data.hasOwnProperty(field)) {
-      if (data[field].length > 0) {
-        return renderData(data[field].map(d => d[key]).join("; "), label, field)
-      }
-    }
-  };
-
-
   const renderData = (data, label, field, html=false, facet=false) => {
     const renderValue = (d) => {
       const facet_field = `${field}`;

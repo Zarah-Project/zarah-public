@@ -2,6 +2,8 @@ import style from "./Highlight.module.css";
 import React, {useState} from "react";
 
 const facetLabels = {
+  name_search: 'Name',
+  note_search: 'Notes',
   title_search: 'Title',
   attachment_text_search: 'PDF',
   abstract_search: 'Abstract',

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {AutoSizer, CellMeasurer, CellMeasurerCache, List} from 'react-virtualized';
 import { Typography } from 'antd';
-import facetStyle from "./TextFacet.module.css";
+import facetStyle from "./LongTextFacet.module.css";
 const { Paragraph } = Typography;
 import { Input } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
