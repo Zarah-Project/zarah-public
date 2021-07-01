@@ -50,7 +50,7 @@ const ResultPageList = ({data, highlights}) => {
         return (
           <a onClick={() => onSpecialRecordClick(facetID, facetText, record_type)}>
             <div className={style.Thumbnail}>
-              <span className={style.ThumbnailRestricted}>Special Records<br/>Organisation</span>
+              <span className={style.ThumbnailRestricted}>Special Records<br/>Organization</span>
             </div>
           </a>
         );
