@@ -192,6 +192,8 @@ const ResultPageList = ({data, highlights}) => {
     const id = d['id'].substring(lastIndex + 1);
     const name = d['name'];
 
+    const recordType = d['record_type'] === 'organisation' ? 'Organization' : _.startCase(d['record_type']);
+
     return (
       <Row style={{marginBottom: '40px'}} key={idx}>
         <Col xs={4}>
@@ -205,7 +207,7 @@ const ResultPageList = ({data, highlights}) => {
               </a>
             </div>
             <div className={style.ItemType}>
-              {`Special Record (${_.startCase(d['record_type'])})`}
+              {`Special Record (${recordType})`}
             </div>
             <div>
               <React.Fragment>
