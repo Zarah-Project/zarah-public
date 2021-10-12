@@ -78,7 +78,6 @@ const AuthorityRecord = ({record, onFilter}) => {
       <React.Fragment>
         {displayData(data, 'Place', 'place_name')}
         {displayData(data, 'Country', 'country')}
-        {displayData(data, 'Notes', 'notes', true)}
         {data['other_names'].length > 0 && getNames()}
       </React.Fragment>
     )
