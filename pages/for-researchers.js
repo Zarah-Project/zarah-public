@@ -25,7 +25,12 @@ export default function ForResearchers() {
                   type="application/pdf"
                   width="100%"
                   height="600px"
-                />
+                >
+                  <embed
+                    src={`/pdf/ZARAH_DB_-_For_Researchers_2021-06-30.pdf`}
+                    type="application/pdf"
+                  />
+                </object>
               </div>
             </Col>
             <Col xs={0} sm={2}/>
