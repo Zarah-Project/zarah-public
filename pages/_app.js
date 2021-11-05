@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/antd.less";
 import { MediaContextProvider } from "../components/Media/Media"
 import useRouterScroll from "../utils/useRouterScroll";
 
+require('../styles/antd.less');
 
 function MyApp({ Component, pageProps }) {
   return (

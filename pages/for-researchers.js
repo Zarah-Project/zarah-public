@@ -1,9 +1,9 @@
 import AppLayout from "../components/Layout/Layout";
 import React from "react";
-import Head from "next/dist/next-server/lib/head";
+import Head from "next/head";
 import {Col, Row} from "antd";
 import style from "../styles/staticpages.module.css";
-import {API} from "../utils/api";
+import PDFBox from "../components/PDFBox/PDFBox";
 
 export default function ForResearchers() {
   return (
@@ -19,19 +19,7 @@ export default function ForResearchers() {
               <div className={style.Title}>
                 <h1>For Researchers</h1>
               </div>
-              <div style={{marginBottom: '30px'}}>
-                <object
-                  data={`/pdf/ZARAH_DB_-_For_Researchers_2021-06-30.pdf`}
-                  type="application/pdf"
-                  width="100%"
-                  height="600px"
-                >
-                  <embed
-                    src={`/pdf/ZARAH_DB_-_For_Researchers_2021-06-30.pdf`}
-                    type="application/pdf"
-                  />
-                </object>
-              </div>
+              <PDFBox fileURL={'/pdf/ZARAH_DB_-_For_Researchers_2021-06-30.pdf'} />
             </Col>
             <Col xs={0} sm={2}/>
           </Row>

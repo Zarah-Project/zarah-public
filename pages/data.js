@@ -1,6 +1,6 @@
 import AppLayout from "../components/Layout/Layout";
 import React from "react";
-import Head from "next/dist/next-server/lib/head";
+import Head from "next/head";
 import {Col, Row} from "antd";
 import style from "../styles/staticpages.module.css";
 
