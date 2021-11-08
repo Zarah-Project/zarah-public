@@ -7,6 +7,7 @@ import Link from "next/link";
 import Citation from "./Citation";
 import AuthorityRecord from "./AuthorityRecord";
 import {useRouter} from "next/router";
+import PDFBox from "../PDFBox/PDFBox";
 
 const Document = ({data}) => {
   const router = useRouter();
@@ -188,12 +189,7 @@ const Document = ({data}) => {
           </div>
           <Collapse isOpen={viewerOpen}>
             <div style={{marginBottom: '30px'}}>
-              <object
-                data={`${API}/view_file/${file_id}`}
-                type="application/pdf"
-                width="100%"
-                height="600px"
-              />
+              <PDFBox fileURL={`${API}/view_file/${file_id}`} height="600px" />
             </div>
           </Collapse>
         </React.Fragment>

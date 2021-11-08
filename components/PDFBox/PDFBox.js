@@ -5,13 +5,13 @@ import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
-const PDFBox = ({fileURL}) => {
+const PDFBox = ({fileURL, height, width='100%'}) => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   return (
     fileURL ?
     <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.10.377/build/pdf.worker.js">
-      <div style={{ height: '820px', marginBottom: '20px' }}>
+      <div style={{ height: height, width: width, marginBottom: '20px' }}>
         <Viewer
           fileUrl={fileURL}
           plugins={[defaultLayoutPluginInstance,]}
