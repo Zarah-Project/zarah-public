@@ -126,6 +126,12 @@ const ResultPageList = ({data, highlights}) => {
                 {d['author']}
               </div> : ''
           }
+          {
+            d.hasOwnProperty('publication') ?
+              <div>
+                {d['publication']}
+              </div> : ''
+          }
           <div className={style.ItemType}>
             {d['item_type']}
           </div>
