@@ -55,7 +55,7 @@ const Document = ({data}) => {
     const {classifications} = data;
     if (classifications) {
       const cl = classifications.filter(c => c['category_key'] === field);
-      const values = cl.map(c => c['field_type'] === 'tag' ? c['full_name'] : `Other: ${c['text']}`);
+      const values = cl.map(c => c['field_type'] === 'tag' ? c['full_name'] : `${c['full_name']}: ${c['text']}`);
       if (values.length > 0) {
         return renderData(values, label, field, false, true)
       }
