@@ -10,7 +10,7 @@ const PDFBox = ({fileURL, height, width='100%'}) => {
 
   return (
     fileURL ?
-    <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.2.146/build/pdf.worker.js">
+    <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.10.377/build/pdf.worker.js">
       <div style={{ height: height, width: width, marginBottom: '20px' }}>
         <Viewer
           fileUrl={fileURL}
