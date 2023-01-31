@@ -26,6 +26,7 @@
     "next": "11",
     "next-compose-plugins": "^2.2.1",
     "next-google-fonts": "^1.2.1",
+    "next-images": "^1.8.4",
     "next-plugin-antd-less": "^1.5.2",
     "pdfjs-dist": "^2.10.377",
     "react": "17.0.1",

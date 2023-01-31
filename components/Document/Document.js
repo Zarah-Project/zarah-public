@@ -8,6 +8,7 @@ import Citation from "./Citation";
 import AuthorityRecord from "./AuthorityRecord";
 import {useRouter} from "next/router";
 import PDFBox from "../PDFBox/PDFBox";
+import Image from 'next/image';
 
 const Document = ({data}) => {
   const router = useRouter();
@@ -55,7 +56,7 @@ const Document = ({data}) => {
     const {classifications} = data;
     if (classifications) {
       const cl = classifications.filter(c => c['category_key'] === field);
-      const values = cl.map(c => c['field_type'] === 'tag' ? c['full_name'] : `Other: ${c['text']}`);
+      const values = cl.map(c => c['field_type'] === 'tag' ? c['full_name'] : `${c['full_name']}: ${c['text']}`);
       if (values.length > 0) {
         return renderData(values, label, field, false, true)
       }
@@ -205,6 +206,28 @@ const Document = ({data}) => {
     })
   };
 
+  const displayCCLicense = () => {
+    if (data['cc_display']) {
+      return (
+        <div className={style.CCLicense}>
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+            <Image
+              alt="Creative Commons License"
+              width={88}
+              height={31}
+              style="border-width:0"
+              src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"
+            />
+          </a>
+          <br />
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+        </div>
+      )
+    } else {
+      return ''
+    }
+  }
+
   return (
     <div className={style.RecordWrap}>
       <Row>
@@ -251,6 +274,7 @@ const Document = ({data}) => {
           {displayClassificationField("Format of participation", "format_of_participation")}
           {displayClassificationField("Communication and knowledge production", "knowledge_production")}
           <Citation documentID={data.id}/>
+          {displayCCLicense()}
         </Col>
         <Col xs={0} sm={2}/>
       </Row>

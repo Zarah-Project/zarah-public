@@ -6,6 +6,6 @@ module.exports = function (api) {
     plugins: [
       ['import', { libraryName: 'antd', style: true }],
       ['module-resolver', { alias: { '@': '.' } }]
-    ],
+    ]
   };
 };
