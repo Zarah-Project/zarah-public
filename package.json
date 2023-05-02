@@ -12,6 +12,8 @@
     "@kunukn/react-collapse": "^2.2.9",
     "@react-pdf-viewer/core": "^2.10.1",
     "@react-pdf-viewer/default-layout": "2.10.1",
+    "@react-pdf-viewer/print": "2.10.1",
+    "@react-pdf-viewer/toolbar": "2.10.1",
     "antd": "^4.8.2",
     "axios": "^0.21.1",
     "babel-plugin-import": "^1.13.3",
