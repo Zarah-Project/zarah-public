@@ -3,6 +3,7 @@ import React from "react";
 import Head from "next/head";
 import {Col, Row} from "antd";
 import style from "../styles/staticpages.module.css";
+import PDFBox from "../components/PDFBox/PDFBox";
 
 export default function About() {
   return (
@@ -27,8 +28,9 @@ export default function About() {
               Public data in ZARAH DB are accessible in pre-rendered formats (CSV files, JSON), meant to allow users
               to create different data visualizations and perform network analysis. Metadata from search results will
               be exportable in JSON format for further data analysis.<br/><br/>
-              Researchers interested in accessing our metadata for further analysis are asked to contact the ZARAH
-              project via email (zarahdb@ceu.edu).
+              The ZARAH DB Metadata Hierarchy can be accessed here. Researchers interested in additional information
+              are asked to contact the ZARAH project via email (zarahdb@ceu.edu).<br/><br/>
+              <PDFBox fileURL={'/pdf/ZARAH_DB_-_Metadata_Hierarchy.pdf'} defaultScale={1.1}/>
             </Col>
             <Col xs={0} sm={2}/>
           </Row>

@@ -7,7 +7,7 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
 import style from "./PDFBox.module.css";
 
-const PDFBox = ({fileURL, width='100%'}) => {
+const PDFBox = ({fileURL, defaultScale=1.2, width='100%'}) => {
   const toolbarPluginInstance = toolbarPlugin();
   const { renderDefaultToolbar, Toolbar } = toolbarPluginInstance;
 
@@ -51,7 +51,7 @@ const PDFBox = ({fileURL, width='100%'}) => {
           >
             <Viewer
               fileUrl={fileURL}
-              defaultScale={1.2}
+              defaultScale={defaultScale}
               plugins={[toolbarPluginInstance]}
             />
           </div>
