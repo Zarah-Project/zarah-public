@@ -22,10 +22,10 @@ const DesktopMenu = () => {
             <Menu.Item className={style.MenuItem} key="search">
               <Link href={'/search'}>DATABASE</Link>
             </Menu.Item>
-            <Menu.Item className={style.MenuItem} key="timeline">
+            <Menu.Item className={style.MenuItem} key="for-researchers">
               <Link href={'/for-researchers'}>FOR RESEARCHERS</Link>
             </Menu.Item>
-            <Menu.Item className={style.MenuItem} key="collections">
+            <Menu.Item className={style.MenuItem} key="data">
               <Link href={'/data'}>DATA</Link>
             </Menu.Item>
             <Menu.Item className={style.MenuItem} key="about">
