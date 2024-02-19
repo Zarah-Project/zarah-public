@@ -40,7 +40,7 @@ const ResultPageList = ({data, highlights}) => {
     switch (record_type) {
       case 'person':
         return (
-          <a onClick={() => onSpecialRecordClick(facetID, facetText, record_type)}>
+          <a href={`/special-records/${record_type}/${facetID}`}>
             <div className={style.Thumbnail}>
               <span className={style.ThumbnailRestricted}>Special Records<br/>Person</span>
             </div>
@@ -48,7 +48,7 @@ const ResultPageList = ({data, highlights}) => {
         );
       case 'organisation':
         return (
-          <a onClick={() => onSpecialRecordClick(facetID, facetText, record_type)}>
+          <a href={`/special-records/${record_type}/${facetID}`}>
             <div className={style.Thumbnail}>
               <span className={style.ThumbnailRestricted}>Special Records<br/>Organization</span>
             </div>
@@ -56,7 +56,7 @@ const ResultPageList = ({data, highlights}) => {
         );
       case 'place':
         return (
-          <a onClick={() => onSpecialRecordClick(facetID, facetText, record_type)}>
+          <a href={`/special-records/${record_type}/${facetID}`}>
             <div className={style.Thumbnail}>
               <span className={style.ThumbnailRestricted}>Special Records<br/>Place</span>
             </div>
@@ -64,7 +64,7 @@ const ResultPageList = ({data, highlights}) => {
         );
       case 'event':
         return (
-          <a onClick={() => onSpecialRecordClick(facetID, facetText, record_type)}>
+          <a href={`/special-records/${record_type}/${facetID}`}>
             <div className={style.Thumbnail}>
               <span className={style.ThumbnailRestricted}>Special Records<br/>Event</span>
             </div>
@@ -89,14 +89,14 @@ const ResultPageList = ({data, highlights}) => {
     }
   };
 
-  const renderSpecialSearchHit = (d, facetID, facetText) => {
+  const renderSpecialSearchHit = (d, id) => {
     if (highlights.hasOwnProperty(d.id)) {
       const h = highlights[d.id];
       if (Object.keys(h).length > 0) {
         return (
           <div className={style.Highlight}>
             <Highlight data={h}/>
-            <a className={style.More} onClick={() => onSpecialRecordClick(facetID, facetText, d['record_type'])}>
+            <a href={`/special-records/${d['record_type']}/${id}`}>
               more >>
             </a>
           </div>
@@ -208,7 +208,7 @@ const ResultPageList = ({data, highlights}) => {
         <Col xs={20}>
           <div className={style.ResultItemData}>
             <div className={style.Title}>
-              <a onClick={() => onSpecialRecordClick(id, name, d['record_type'])}>
+              <a href={`/special-records/${d['record_type']}/${id}`}>
                 {d['name']}
               </a>
             </div>

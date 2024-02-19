@@ -1,3 +1,21 @@
+.RecordWrapper {
+    margin-top: 60px;
+    margin-bottom: 50px;
+    min-height: calc(100vh - 210px);
+}
+
+.Title {
+    margin: 20px 0;
+}
+
+.Title h1 {
+    color: #c46076;
+    font-size: 30px;
+    line-height: 40px;
+    display: inline;
+    background: #F3F3F3;
+    box-shadow: 10px 0 0 #F3F3F3, -10px 0 0 #F3F3F3;
+}
 
 .RecordWrapper dl {
     margin-bottom: 5px;

@@ -1,11 +1,11 @@
 import React from 'react';
 import style from "./AuthorityRecord.module.css";
 import {Button, Col, Row} from "antd";
-import useSWR from "swr";
-import {API, fetcher} from "../../utils/api";
+import {useRouter} from "next/router";
 
-const AuthorityRecord = ({record, onFilter}) => {
-  const { data, error } = useSWR(record ? `${API}/${record.recordType}/${record.id}/` : null, fetcher);
+
+const AuthorityRecord = ({data, type}) => {
+  const router = useRouter();
 
   const displayData = (data={}, label, field, html) => {
     if (data.hasOwnProperty(field)) {
@@ -94,7 +94,7 @@ const AuthorityRecord = ({record, onFilter}) => {
   };
 
   const displayFields = () => {
-    switch (record['field']) {
+    switch (type) {
       case 'people':
         return displayPersonFields();
       case 'organisations':
@@ -108,8 +108,15 @@ const AuthorityRecord = ({record, onFilter}) => {
     }
   };
 
+  const onFilter = (value, field) => {
+    router.push({
+      pathname: '/search',
+      query: {[field]: value}
+    })
+  };
+
   const onFilterClick = () => {
-    switch (record['field']) {
+    switch (type) {
       case 'people':
         onFilter(data['full_name'], 'person');
         break;
@@ -127,17 +134,49 @@ const AuthorityRecord = ({record, onFilter}) => {
     }
   };
 
+  const displayTitle = () => {
+    switch (type) {
+      case 'people':
+        return displayData(data, undefined, 'full_name');
+      case 'organisations':
+        return displayData(data, undefined, 'name');
+      case 'places':
+        return displayData(data, undefined, 'place_name');
+      case 'events':
+        return displayData(data, undefined, 'event')
+    default:
+        break;
+    }
+  }
+
   return (
     <div className={style.RecordWrapper}>
       <Row>
-        <Col xs={24}>
+        <Col xs={0} sm={2}/>
+        <Col xs={24} sm={20}>
+          <div className={style.Title}>
+            <h1>
+              {displayTitle()}
+            </h1>
+          </div>
+        </Col>
+        <Col xs={0} sm={2}/>
+      </Row>
+      <Row>
+        <Col xs={0} sm={2}/>
+        <Col xs={24} sm={20}>
           {data && displayFields()}
         </Col>
-        <Col xs={24}>
+        <Col xs={0} sm={2}/>
+      </Row>
+      <Row>
+        <Col xs={0} sm={2}/>
+        <Col xs={24} sm={20}>
           <div className={style.FilterButton}>
             <Button type="primary" onClick={() => onFilterClick()}>Filter</Button>
           </div>
         </Col>
+        <Col xs={0} sm={2}/>
       </Row>
     </div>
   )

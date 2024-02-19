@@ -15,8 +15,6 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
   const [filterValue, setFilterValue] = useState('');
   const [facetOriginalData, setFacetOriginalData] = useState([]);
   const [facetData, setFacetData] = useState([]);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [selectedRecord, setSelectedRecord] = useState({});
 
   const cache = new CellMeasurerCache({
     fixedWidth: true,
@@ -67,9 +65,6 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
             <div className={facetStyle.FacetWrapper}>
               <span className={facetStyle.LongFacetActiveText}>
                 {facetText}
-                <a className={facetStyle.AdditionalInfo} onClick={() => onFacetClick(facetID, facetText)} title="Click to view additional information">
-                  [<span>+</span>]
-                </a>
               </span>
               <span className={facetStyle.FacetRemove}>
                 <a className={facetStyle.FacetRemoveLink} onClick={() => onFacetRemoveClick(facetText)}>
@@ -95,9 +90,6 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
                 <a className={facetStyle.FacetLink} onClick={() => onSelect(facetText)}>
                   {facetText}
                 </a>
-                <a className={facetStyle.AdditionalInfo} onClick={() => onFacetClick(facetID, facetText)} title="Click to view additional information">
-                  [<span>+</span>]
-                </a>
               </span>
               <span className={facetStyle.FacetNumber}>
                 ({facetData[index]['count']})
@@ -109,45 +101,12 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
     }
   };
 
-  const onFacetClick = (facetID, facetText) => {
-    let api = '';
-    switch (field) {
-      case 'person':
-        api = 'people';
-        break;
-      case 'organisation':
-        api = 'organisations';
-        break;
-      case 'event':
-        api = 'events';
-        break;
-      case 'place':
-        api = 'places';
-        break;
-      default:
-        break;
-    }
-
-    setSelectedRecord({
-      drawerTitle: facetText,
-      field: api,
-      id: facetID,
-      recordType: api,
-    });
-    setDrawerOpen(true);
-  };
-
   const onFacetRemoveClick = (value) => {
     onRemove(value)
   };
 
   const onSearch = (value) => {
     setFilterValue(value);
-  };
-
-  const onFilter = (value, field) => {
-    setDrawerOpen(false);
-    onSelect(value);
   };
 
   if (facets.length > 0) {
@@ -179,17 +138,6 @@ const AuthorityFacet = ({facets, selectedFacets, search=false, field, onSelect, 
             )}
           </AutoSizer>
         </div>
-        <Drawer
-          title={selectedRecord['drawerTitle']}
-          placement="right"
-          closable={true}
-          onClose={() => setDrawerOpen(false)}
-          width={'40%'}
-          visible={drawerOpen}
-          className={style.Drawer}
-        >
-          <AuthorityRecord record={selectedRecord} onFilter={onFilter} />
-        </Drawer>
       </React.Fragment>
     )
   } else {

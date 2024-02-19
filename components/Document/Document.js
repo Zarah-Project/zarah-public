@@ -64,19 +64,23 @@ const Document = ({data}) => {
   };
 
   const displayAuthorityField = (label, field, displayKey) => {
+    const getType = () => {
+      switch (field) {
+        case 'people':
+          return 'person'
+        case 'organisations':
+          return 'organisation'
+        case 'events':
+          return 'event'
+        case 'places':
+          return 'place'
+      }
+    }
+
     const displayAuthorityValue = (d, idx) => {
       return (
         <React.Fragment>
-          <a onClick={
-            () => {
-              setSelectedRecord({
-                drawerTitle: d[displayKey],
-                field: field,
-                id: d.id,
-                recordType: field,
-              });
-              setDrawerOpen(true);
-            }}>
+          <a key={`${getType}_${d.id}`} href={`/special-records/${getType()}/${d.id}`} target={'_blank'}>
             {idx < data[field].length - 1 ? `${d[displayKey]}; ` : d[displayKey]}
           </a>
         </React.Fragment>
@@ -198,14 +202,6 @@ const Document = ({data}) => {
     }
   };
 
-  const onFilter = (value, field) => {
-    setDrawerOpen(false);
-    router.push({
-      pathname: '/search',
-      query: {[field]: value}
-    })
-  };
-
   const displayCCLicense = () => {
     if (data['cc_display']) {
       return (
@@ -278,17 +274,6 @@ const Document = ({data}) => {
         </Col>
         <Col xs={0} sm={2}/>
       </Row>
-      <Drawer
-        title={selectedRecord['drawerTitle']}
-        placement="right"
-        closable={true}
-        onClose={() => setDrawerOpen(false)}
-        width={'40%'}
-        visible={drawerOpen}
-        className={style.Drawer}
-      >
-        <AuthorityRecord record={selectedRecord} onFilter={onFilter} />
-      </Drawer>
     </div>
   )
 };
