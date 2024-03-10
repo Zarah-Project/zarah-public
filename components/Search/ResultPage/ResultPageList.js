@@ -3,7 +3,7 @@ import {Col, Drawer, Row} from "antd";
 import style from "./ResultPageList.module.css"
 import Image from "next/image";
 import Highlight from "../Highlight/Highlight";
-import AuthorityRecord from "../../Document/AuthorityRecord";
+import AuthorityRecord from "../../AuthorityRecord/AuthorityRecord";
 import {useRouter} from "next/router";
 
 const ResultPageList = ({data, highlights}) => {

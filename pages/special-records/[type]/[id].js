@@ -4,7 +4,8 @@ import useSWR from "swr";
 import {API, fetcher} from "../../../utils/api";
 import AppLayout from "../../../components/Layout/Layout";
 import Head from "next/head";
-import AuthorityRecord from "../../../components/Document/AuthorityRecord";
+import AuthorityRecord from "../../../components/AuthorityRecord/AuthorityRecord";
+import {getAuthorityRecordTitle} from "../../../utils/getAuthorityRecordTitle";
 
 const SpecialRecordsPage = () => {
     const router = useRouter();
@@ -28,7 +29,7 @@ const SpecialRecordsPage = () => {
     return (
         <AppLayout withBackground={true}>
             <Head>
-                <title>{data ? `ZARAH DB - ${data.title}` : 'ZARAH DB'}</title>
+                <title>{data ? `ZARAH DB - ${getAuthorityRecordTitle(data, type)} - Special Record` : 'ZARAH DB'}</title>
             </Head>
             <div className="container">
                 {data ? <AuthorityRecord data={data} type={getType(type)} onFilter={() => {}} /> : ''}

@@ -2,6 +2,9 @@ import React from 'react';
 import style from "./AuthorityRecord.module.css";
 import {Button, Col, Row} from "antd";
 import {useRouter} from "next/router";
+import Citation from "../Document/Citation";
+import AuthorityRecordCitation from "./AuthorityRecordCitation";
+import {getAuthorityRecordTitle} from "../../utils/getAuthorityRecordTitle";
 
 
 const AuthorityRecord = ({data, type}) => {
@@ -134,17 +137,17 @@ const AuthorityRecord = ({data, type}) => {
     }
   };
 
-  const displayTitle = () => {
+  const getType = () => {
     switch (type) {
       case 'people':
-        return displayData(data, undefined, 'full_name');
+        return 'Person';
       case 'organisations':
-        return displayData(data, undefined, 'name');
+        return 'Organisation';
       case 'places':
-        return displayData(data, undefined, 'place_name');
+        return 'Place';
       case 'events':
-        return displayData(data, undefined, 'event')
-    default:
+        return 'Event';
+      default:
         break;
     }
   }
@@ -156,7 +159,7 @@ const AuthorityRecord = ({data, type}) => {
         <Col xs={24} sm={20}>
           <div className={style.Title}>
             <h1>
-              {displayTitle()}
+              {getAuthorityRecordTitle(data, type)}
             </h1>
           </div>
         </Col>
@@ -166,6 +169,7 @@ const AuthorityRecord = ({data, type}) => {
         <Col xs={0} sm={2}/>
         <Col xs={24} sm={20}>
           {data && displayFields()}
+          <AuthorityRecordCitation title={getAuthorityRecordTitle(data, type)} type={getType()} />
         </Col>
         <Col xs={0} sm={2}/>
       </Row>

@@ -18,18 +18,33 @@
 }
 
 .RecordWrapper dl {
+    display: flex;
     margin-bottom: 5px;
 }
 
+@media screen and (max-width: 768px) {
+    .RecordWrapper dl {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .RecordWrapper dt {
+        text-transform: uppercase;
+    }
+}
+
 .RecordWrapper dt {
+    flex: 1;
     color: #c46076;
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
     font-weight: 500;
     font-size: 16px;
+    padding-left: 10px;
 }
 
 .RecordWrapper dd {
+    flex: 2;
     margin-bottom: 0;
 }
 

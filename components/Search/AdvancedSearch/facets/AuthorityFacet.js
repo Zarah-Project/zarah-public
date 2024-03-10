@@ -7,7 +7,7 @@ import { Input } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import EmptyFacet from "./EmptyFacet";
 import style from "../../../Document/Document.module.css";
-import AuthorityRecord from "../../../Document/AuthorityRecord";
+import AuthorityRecord from "../../../AuthorityRecord/AuthorityRecord";
 
 const { Search } = Input;
 

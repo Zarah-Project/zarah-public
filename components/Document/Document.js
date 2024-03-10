@@ -5,17 +5,11 @@ import {API} from "../../utils/api";
 import Collapse from "@kunukn/react-collapse";
 import Link from "next/link";
 import Citation from "./Citation";
-import AuthorityRecord from "./AuthorityRecord";
-import {useRouter} from "next/router";
 import PDFBox from "../PDFBox/PDFBox";
 import Image from 'next/image';
 
 const Document = ({data}) => {
-  const router = useRouter();
-
   const [viewerOpen, setViewerOpen] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [selectedRecord, setSelectedRecord] = useState({});
 
   const displayZoteroField = (label, zoteroField) => {
     if (data.hasOwnProperty('zotero_data')) {
