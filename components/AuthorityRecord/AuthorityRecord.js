@@ -177,7 +177,10 @@ const AuthorityRecord = ({data, type}) => {
         <Col xs={0} sm={2}/>
         <Col xs={24} sm={20}>
           <div className={style.FilterButton}>
-            <Button type="primary" onClick={() => onFilterClick()}>Filter</Button>
+            {
+              data['used'] > 0 &&
+              <Button type="primary" onClick={() => onFilterClick()}>Appears in {data['used']} {data['used'] > 1 ? 'documents' : 'document'} - Show</Button>
+            }
           </div>
         </Col>
         <Col xs={0} sm={2}/>
