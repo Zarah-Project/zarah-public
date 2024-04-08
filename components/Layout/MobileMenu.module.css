@@ -1,0 +1,77 @@
+.Header {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 60px;
+    line-height: 30px;
+    background-color: #F9F9F9;
+    padding: 0 20px;
+}
+
+.Logo {
+    padding: 10px 0;
+    height: 60px;
+    opacity: .7;
+}
+
+.BurgerMenu, .BurgerMenu.Open {
+    display: inline-block;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    top: 5px;
+    z-index: 999;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #c46076;
+}
+
+.BurgerMenu .Bar1, .Bar2, .Bar3 {
+    width: 25px;
+    height: 3px;
+    background-color: #c46076;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+.BurgerMenu.Open .Bar1 {
+    -webkit-transform: rotate(-45deg) translate(-4px, 4px);
+    transform: rotate(-45deg) translate(-4px, 4px);
+}
+
+.BurgerMenu.Open .Bar2 {
+    opacity: 0;
+}
+
+.BurgerMenu.Open .Bar3 {
+    -webkit-transform: rotate(45deg) translate(-6px, -6px);
+    transform: rotate(45deg) translate(-6px, -6px);
+}
+
+.PopupMenu {
+    font-family: 'Oswald', sans-serif;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 0;
+    z-index: 99;
+}
+
+.PopupMenu ul {
+    position: relative;
+    top: 0;
+    font-size: 24px;
+    padding: 0;
+}
+
+.PopupMenu li:hover, .PopupMenu a:hover {
+    color: #c46076;
+}
+
+.PopupMenu li, .PopupMenu a {
+    list-style: outside none none;
+    margin: 20px 0;
+    padding: 0;
+    cursor: pointer;
+    color: #333;
+}

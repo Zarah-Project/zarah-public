@@ -1,0 +1,55 @@
+.Pagination {
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .Pagination {
+        display: block;
+        text-align: center;
+    }
+}
+
+.Pagination :global .ant-pagination-item {
+    font-weight: 700;
+    border: none;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+}
+
+.Pagination :global .ant-pagination-item a {
+    color: #666;
+}
+
+.Pagination :global .ant-pagination-item a:hover {
+    color: #c46076;
+}
+
+.Pagination :global .ant-pagination-item-active a {
+    color: #c46076;
+}
+
+.Pagination :global .ant-pagination-item-link {
+    font-weight: 700;
+    border: none;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+}
+
+.Pagination :global .ant-pagination-item-link:hover {
+    color: #c46076;
+}
+
+.Pagination :global .ant-pagination-options-size-changer {
+    font-weight: 700;
+    color: #c46076;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+}
+
+.Pagination :global .ant-select-selector {
+    border-radius: 2px !important;
+    border: none !important;
+}

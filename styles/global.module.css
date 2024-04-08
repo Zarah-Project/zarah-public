@@ -1,0 +1,54 @@
+.Title {
+    color: #647B9E;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.Text {
+    font-weight: 400;
+}
+
+.Section {
+    margin-bottom: 50px;
+}
+
+.Background {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.FrontPageSearch {
+    width: 100%;
+    height: calc(100vh - 120px);
+    position: relative;
+    flex-grow: 1;
+    margin-top: 20px;
+    background-size: cover;
+    background-image: url('/images/zarah-women.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    text-align: center;
+}
+
+.ImageText {
+    font-size: 12px;
+    line-height: 20px;
+    color: #F9F9F9;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.ImageText span {
+    font-style: italic;
+}
+
+@media screen and (max-width: 768px) {
+    .FrontPageSearch {
+        height: calc(100vh - 190px);
+    }
+}

@@ -1,0 +1,28 @@
+.RecordsPerPageWrapper {
+    padding: 20px;
+}
+
+.Button {
+    display: inline-block;
+    color: #666;
+    font-weight: 600;
+    font-size: 14px;
+    background-color: #FFFFFF;
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    line-height: 20px;
+}
+
+.Label {
+    color: #C46076;
+}
+
+.RemoveIcon {
+    color: #666;
+    padding-left: 10px;
+}
+
+.RemoveIcon:hover {
+    color: #050505 !important;
+}

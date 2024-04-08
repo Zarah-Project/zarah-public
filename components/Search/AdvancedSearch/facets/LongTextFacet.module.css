@@ -1,0 +1,80 @@
+.FacetWrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.FacetText {
+    flex-grow: 1;
+    text-align: right;
+    font-size: 14px;
+}
+
+.FacetActiveText {
+    color: #666;
+    font-size: 14px;
+    font-weight: 600;
+    flex-grow: 1;
+    text-align: right;
+}
+
+.FacetRemove {
+    color: #666;
+    font-weight: 600;
+    width: 60px;
+    text-align: center;
+}
+
+.FacetRemoveLink {
+    font-weight: 600;
+    color: #666 !important;
+}
+
+.FacetRemoveLink:hover {
+    color: #050505 !important;
+}
+
+.FacetNumber {
+    width: 60px;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.AdditionalInfo {
+    margin-left: 5px;
+}
+
+.AdditionalInfo span {
+    color: #88454f !important;
+}
+
+.FacetLink {
+    cursor: pointer;
+}
+
+.FacetLink:hover {
+    color: #F45844;
+}
+
+.Search {
+    margin: 5px 0px;
+}
+
+.LongFacetActiveText {
+    color: #666;
+    font-size: 14px;
+    font-weight: 600;
+    flex-grow: 1;
+    padding-left: 5px;
+    margin-bottom: 0 !important;
+}
+
+.LongFacetText {
+    flex-grow: 1;
+    font-size: 14px;
+    padding-left: 5px;
+    margin-bottom: 0 !important;
+}
+
+.FacetLink:hover {
+    color: #666666 !important;
+}

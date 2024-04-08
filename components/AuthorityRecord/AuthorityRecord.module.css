@@ -1,0 +1,60 @@
+.RecordWrapper {
+    margin-top: 60px;
+    margin-bottom: 50px;
+    min-height: calc(100vh - 210px);
+}
+
+.Title {
+    margin: 20px 0;
+}
+
+.Title h1 {
+    color: #c46076;
+    font-size: 30px;
+    line-height: 40px;
+    display: inline;
+    background: #F3F3F3;
+    box-shadow: 10px 0 0 #F3F3F3, -10px 0 0 #F3F3F3;
+}
+
+.RecordWrapper dl {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .RecordWrapper dl {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .RecordWrapper dt {
+        text-transform: uppercase;
+    }
+}
+
+.RecordWrapper dt {
+    flex: 1;
+    color: #c46076;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.RecordWrapper dd {
+    flex: 2;
+    margin-bottom: 0;
+}
+
+.OtherForms {
+    border-top: 1px dotted #EEE;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.FilterButton {
+    margin-top: 30px;
+    text-align: center;
+}
