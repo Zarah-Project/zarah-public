@@ -18,11 +18,12 @@ export default function PrivacyNotice() {
               <div className={style.Title}>
                 <h1>Privacy Notice</h1>
                 <h2>Provider of this website</h2>
+                Susan Zimmermann<br/>
                 Central European University<br/>
                 Quellenstraße 51-55<br/>
                 1100 Vienna<br/>
                 Austria<br/>
-                <a href={'mailto:NeissL@ceu.edu'}>NeisslL@ceu.edu</a><br/><br/>
+                <a href={'mailto:zimmerma@ceu.edu'}>zimmerma@ceu.edu</a><br/><br/>
                 Our website address is: <a href={'https://public.zarahdb.eu'} target={'_blank'}>https://public.zarahdb.eu</a><br/><br/>
                 The provider of this website places great emphasis on the protection of your personal information and
                 compliance with the EU General Data Protection Regulation (GDPR). This privacy notice relates to the

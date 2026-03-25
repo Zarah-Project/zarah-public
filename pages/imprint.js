@@ -19,13 +19,12 @@ export default function Imprint() {
                 <h1>Imprint</h1>
               </div>
               <h2>Responsible Publisher</h2>
-              Lukas Neissl<br/>
-              ZARAH Program Manager<br/>
+              Susan Zimmermann<br/>
               Central European University<br/>
               Quellenstraße 51-55<br/>
               1100 Vienna<br/>
               Austria<br/>
-              NeisslL@ceu.edu<br/><br/>
+              zimmerma@ceu.edu<br/><br/>
               Copyright © ZARAH<br/><br/>
               All rights reserved. All texts, images or any other content of this website is protected by copyright
               laws. Any reproduction is strictly prohibited without prior written consent.<br/>
